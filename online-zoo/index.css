@@ -1,3 +1,125 @@
+:root {
+  --gradient-light-color: #4ad7be;
+  --gradient-durk-color: #49d6da;
+  --base-light-color: #fff;
+  --base-durk-color: #333333;
+  --primary-light-color: #f2f2f2;
+  --primary-durk-color: #4f4f4f;
+  --toggle-btn-durk-color: #1b1b1b;
+  --toggle-durk-color: #505050;
+  --shadow-toggle-light: 2px 4px 15px rgba(6, 12, 70, 0.15);
+  --shadow-toggle-durk: 2px 4px 15px rgba(230, 230, 230, 0.15);
+  --bg-header: var(--base-light-color);
+  --fg-header: var(--base-durk-color);
+  --bg-theme-toggle-btn: var(--base-light-color);
+  --bg-theme-toggle: var(--primary-light-color);
+  --shadow-theme-toggle-btn: var(--shadow-toggle-light);
+}
+
+:root[theme="durk"] {
+  --bg-header: var(--base-durk-color);
+  --fg-header: var(--base-light-color);
+  --bg-theme-toggle-btn: var(--toggle-btn-durk-color);
+  --bg-theme-toggle: var(--toggle-durk-color);
+  --shadow-theme-toggle-btn: var(--shadow-toggle-durk);
+}
+
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+.container {
+  width: 1620px;
+}
+
+.container_header {
+  height: 94px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  margin: 0;
+}
+
+.logo__link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--fg-header);
+}
+
+.logo__zoo {
+  line-height: 24px;
+  font-size: 36px;
+}
+
+.logo__online {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+
+.nav-list {
+  display: flex;
+  padding-left: 0;
+  margin: 0;
+}
+
+.nav-list__item {
+  list-style-type: none;
+  margin-right: 82px;
+}
+
+.nav-list__item:last-child {
+  margin-right: 0;
+}
+
+.nav-list__link {
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 16px;
+  color: var(--fg-header);
+}
+
+.nav-list__item:first-child .nav-list__link {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.nav-list__item:first-child:hover .nav-list__link {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-list__link:hover {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  width: 54px;
+  height: 30px;
+  display: flex;
+  border-radius: 190px;
+  background-color: var(--bg-theme-toggle);
+  padding: 5px 6px;
+  box-sizing: border-box;
+}
+
+.theme-toggle__btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--bg-theme-toggle-btn);
+  box-shadow: var(--shadow-theme-toggle-btn);
+}
+
