@@ -9,7 +9,8 @@
   --toggle-durk-color: #505050;
   --shadow-toggle-light: 2px 4px 15px rgba(6, 12, 70, 0.15);
   --shadow-toggle-durk: 2px 4px 15px rgba(230, 230, 230, 0.15);
-  --bg-header: var(--base-light-color);
+  --bg-first: var(--base-light-color);
+  --bg-second: var(--primary-light-color);
   --fg-header: var(--base-durk-color);
   --bg-theme-toggle-btn: var(--base-light-color);
   --bg-theme-toggle: var(--primary-light-color);
@@ -17,7 +18,8 @@
 }
 
 :root[theme="durk"] {
-  --bg-header: var(--base-durk-color);
+  --bg-first: var(--base-durk-color);
+  --bg-second: var(--primary-durk-color);
   --fg-header: var(--base-light-color);
   --bg-theme-toggle-btn: var(--toggle-btn-durk-color);
   --bg-theme-toggle: var(--toggle-durk-color);
@@ -28,21 +30,39 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.container {
-  width: 1620px;
+button {
+  cursor: pointer;
+  border: none;
 }
 
-.container_header {
-  height: 94px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ul {
+  margin: 0;
+  padding: 0;
 }
+
+.container {
+  width: 1620px;
+  margin-left: 18px;
+}
+
+/* .wrapper {
+  margin-left: 14px;
+} */
+
+/* Header */
 
 .header {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: var(--bg-first);
+}
+
+.header__container {
+  height: 94px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -68,8 +88,9 @@ body {
 
 .nav-list {
   display: flex;
-  padding-left: 0;
-  margin: 0;
+  padding-top: 7px;
+  box-sizing: border-box;
+  margin-left: -10px;
 }
 
 .nav-list__item {
@@ -86,6 +107,8 @@ body {
   text-decoration: none;
   text-transform: capitalize;
   font-size: 16px;
+
+line-height: 19px;
   color: var(--fg-header);
 }
 
@@ -123,3 +146,144 @@ body {
   box-shadow: var(--shadow-theme-toggle-btn);
 }
 
+/*Watch animal*/
+
+.watch-animal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-second);
+}
+
+.banner {
+  width: 1922px;
+  height: 940px;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.banner__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.banner__container {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.banner__content {
+  padding-top: 206px;
+  box-sizing: border-box;
+}
+
+.banner__social {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 188px;
+  padding-bottom: 110px;
+  box-sizing: border-box;
+}
+
+.banner__title {
+  width: 793px;
+  margin: 0 0 37px;
+  font-weight: 900;
+  font-size: 89px;
+  line-height: 104px;
+  color: var(--base-light-color);
+}
+
+
+/* Watch button */
+.watch-btn {
+  cursor: pointer;
+  width: 245px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--base-light-color);
+  background: linear-gradient(to right, var(--gradient-light-color), var(--gradient-durk-color));
+  border-radius: 2px;
+  text-decoration: none;
+  transition: .5s;
+}
+
+.watch-btn:hover {
+  transform: scale(1.1);
+}
+
+.watch-btn__circle {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--base-light-color);
+}
+
+.watch-btn__arrow {
+  width: 10px;
+  height: 13px;
+  background-color: var(--base-light-color);
+  clip-path: polygon(20% 10%, 100% 50%, 20% 90%, 20% 10%);
+}
+
+/* Social links */
+.social {
+  height: 107px;
+  padding-left: 0;
+  margin: 0;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.social__link {
+  display: block;
+  width: 20px;
+  background-repeat: no-repeat;
+  transition: .5s;
+}
+
+.social__link:hover {
+  transform: scale(1.2);
+}
+
+.social__link_insta {
+  height: 20px;
+  background-image: url(assets/images/insta.svg);
+}
+
+.social__link_twitter {
+  height: 17px;
+  background-image: url(assets/images/twitter.svg);
+}
+
+.social__link_youtube {
+  height: 14px;
+  background-image: url(assets/images/youtube.svg);
+}
+
+.social__link_vk {
+  height: 12px;
+  background-image: url(assets/images/vk.svg);
+}
