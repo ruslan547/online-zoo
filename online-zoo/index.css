@@ -298,13 +298,17 @@ line-height: 19px;
   display: flex;
   justify-content: center;
   background-color: var(--bg-first);
-  padding: 70px 0 145px;
+  padding: 70px 0 101px;
   box-sizing: border-box;
 }
 
 .how-it-works__container {
   width: 790px;
   margin-left: 14px;
+}
+
+.how-it-works__text {
+  margin: 30px 0;
 }
 
 .how-it-works__img {
@@ -319,8 +323,48 @@ line-height: 19px;
   margin: 0 auto;
 }
 
-/*Slider-item-content*/
+/*Inspiring*/
+.inspiring {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-second);
+  padding: 100px 0 118px;
+  box-sizing: border-box;
+}
 
+.inspiring__container {
+  width: 1200px;
+  margin-left: 14px;
+}
+
+.inspiring-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inspiring-list__item {
+  width: 380px;
+  text-align: center;
+}
+
+.inspiring-list__title {
+  margin: 12px 0;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--fg-title);
+}
+
+.inspiring-list__title_last {
+  margin: 15px 0;
+}
+
+.inspiring-list__text {
+  text-align: left;
+}
+
+/*Slider-item-content*/
 .slider-item-content {
   position: absolute;
   bottom: 38px;
@@ -593,5 +637,4 @@ input[type=range]::-moz-range-thumb {
   font-size: 14px;
   line-height: 16px;
   color: var(--fg-text);
-  margin: 30px 0;
 }
