@@ -28,6 +28,8 @@
   --bg-arrow: var(--arrow-durk-color);
   --fg-pay-instruct: var(--primary-durk-color);
   --bg-border-avatar: var(--primary-durk-color);
+  --bg-map-card: var(--base-light-color);
+  --fg-map-card: var(--base-durk-color);
 }
 
 :root[theme="durk"] {
@@ -44,6 +46,8 @@
   --bg-arrow: var(--base-light-color);
   --fg-pay-instruct: var(--primary-light-color);
   --bg-border-avatar: var(--base-light-color);
+  --bg-map-card: var(--base-durk-color);
+  --fg-map-card: var(--base-light-color);
 }
 
 body {
@@ -987,4 +991,137 @@ line-height: 19px;
 
 .testimonials__progress {
   margin-bottom: 30px;
+}
+
+/*Map*/
+.map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-second);
+  padding: 70px 0 100px;
+}
+
+.map__title {
+  margin-bottom: 60px;
+}
+
+.map__map-screen {
+  margin-bottom: 35px;
+}
+
+.map-screen {
+  position: relative;
+  width: 1200px;
+  height: 498px;
+  background-image: url(./assets/images/map.svg);
+}
+
+.mark {
+  position: absolute;
+  width: 66px;
+  height: 93px;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  box-sizing: border-box;
+  background-image: url(./assets/images/mark.svg);
+}
+
+.mark:hover {
+  background-image: url(./assets/images/active-makr.svg);
+}
+
+.mark_eagle {
+  top: 73px;
+  left: 123px;
+}
+
+.mark_crocadile {
+  top: 103px;
+  left: 244px;
+}
+
+.mark_monkey {
+  top: 188px;
+  left: 572px;
+}
+
+.mark_ponda {
+  top: 89px;
+  right: 241px;
+}
+
+.mark_eagle:hover + .map-card_eagle {
+  display: flex;
+}
+
+.mark_crocadile:hover + .map-card_crocadile {
+  display: flex;
+}
+
+.mark_monkey:hover + .map-card_monkey {
+  display: flex;
+}
+
+.mark_ponda:hover + .map-card_ponda {
+  display: flex;
+}
+
+.mark__img {
+  width: 43px;
+  height: 43px;
+}
+
+.map-card {
+  position: absolute;
+  width: 436px;
+  height: 149px;
+  display: none;
+  border-radius: 5px;
+  box-shadow: var(--shadow-testim-card);
+  background-color:var(--bg-map-card);
+  color: var(--fg-map-card);
+  box-sizing: border-box;
+  padding: 40px 44px;
+}
+
+.map-card__img {
+  margin-right: 18px;
+}
+
+.map-card__title {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.map-card__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.map-card__content > * {
+  margin-bottom: 7px;
+}
+
+.map-card_eagle {
+  top: 149px;
+  left: -282px;
+}
+
+.map-card_crocadile {
+  top: 173px;
+  left: -155px;
+}
+
+.map-card_monkey {
+  top: 274px;
+  left: 168px;
+}
+
+.map-card_ponda {
+  top: 175px;
+  right: 271px;
 }
