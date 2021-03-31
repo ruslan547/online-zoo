@@ -198,22 +198,22 @@ ul {
 
 .social__link_insta {
   height: 20px;
-  background-image: url(assets/images/insta.svg);
+  background-image: url(../../assets/images/insta.svg);
 }
 
 .social__link_twitter {
   height: 17px;
-  background-image: url(assets/images/twitter.svg);
+  background-image: url(../../assets/images/twitter.svg);
 }
 
 .social__link_youtube {
   height: 14px;
-  background-image: url(assets/images/youtube.svg);
+  background-image: url(../../assets/images/youtube.svg);
 }
 
 .social__link_vk {
   height: 12px;
-  background-image: url(assets/images/vk.svg);
+  background-image: url(../../assets/images/vk.svg);
 }
 
 /* Watch button */
@@ -669,9 +669,8 @@ line-height: 19px;
 
 .banner-slider__progress {
   position: absolute;
-  right: 0;
-  left: 0;
-  bottom: -66px;
+  bottom: 3px;
+  left: 324px;
 }
 
 /*How it works*/
@@ -830,6 +829,7 @@ line-height: 19px;
   right: 0;
   height: 98%;
   background-color: var(--shdow-card);
+  border-radius: 4px;
 }
 
 /*Pay and feed*/
@@ -1004,7 +1004,7 @@ line-height: 19px;
   position: relative;
   width: 1200px;
   height: 498px;
-  background-image: url(./assets/images/map.svg);
+  background-image: url(../../assets/images/map.svg);
 }
 
 .mark {
@@ -1015,11 +1015,12 @@ line-height: 19px;
   justify-content: center;
   padding-top: 15px;
   box-sizing: border-box;
-  background-image: url(./assets/images/mark.svg);
+  background-image: url(../../assets/images/mark.svg);
+  transition: .5s;
 }
 
 .mark:hover {
-  background-image: url(./assets/images/active-makr.svg);
+  background-image: url(../../assets/images/active-makr.svg);
 }
 
 .mark_eagle {
@@ -1260,7 +1261,7 @@ input::-moz-placeholder {
   border: none;
   outline: none;
   color: var(--base-light-color);
-  background-image: url(./assets/images/btn-arrow.svg);
+  background-image: url(../../assets/images/btn-arrow.svg);
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: right;

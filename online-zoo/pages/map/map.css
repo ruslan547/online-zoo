@@ -600,6 +600,11 @@ line-height: 19px;
   color: var(--base-light-color);
 }
 
+.yem-digital {
+  width: 45px;
+  height: 45px;
+}
+
 .rs-school {
   width: 106px;
   height: 41px;
