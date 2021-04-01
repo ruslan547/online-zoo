@@ -152,6 +152,7 @@ ul {
   bottom: 0px;
   left: 0;
   padding-left: 23px;
+  z-index: 999;
 }
 
 .slider-item-content__text {
@@ -673,10 +674,26 @@ line-height: 19px;
   padding-left: 23px;
 }
 
+.banner-slider__container {
+  position: relative;
+  overflow: hidden;
+}
+
 .banner-slider__img_active + .banner-slider__slider-item-content {
   bottom: 38px;
   animation: move  1s ;
   animation-fill-mode: forwards;
+}
+
+.banner-slider__img_active + .banner-slider__slider-item-content + .shadow {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 96%;
+  background-color: var(--shdow-card);
+  border-radius: 8px;
 }
 
 .banner-slider__progress {
@@ -852,7 +869,7 @@ line-height: 19px;
   top: 0;
   left: 0;
   right: 0;
-  height: 98%;
+  height: 99%;
   background-color: var(--shdow-card);
   border-radius: 4px;
 }
@@ -1103,6 +1120,8 @@ line-height: 19px;
 }
 
 .map-card__img {
+  width: 65px;
+  height: 65px;
   margin-right: 18px;
 }
 

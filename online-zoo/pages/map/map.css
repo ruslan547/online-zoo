@@ -126,6 +126,19 @@ ul {
   transform: scale(1.1);
 }
 
+.slider__item_selected:hover {
+  cursor: alias;
+  position: relative;
+  width: 108px;
+  height: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--selected-gradient);
+  transform: scale(1.4);
+}
+
 /*Slider arrow*/
 .slider-arrow {
   cursor: pointer;
