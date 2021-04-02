@@ -72,6 +72,51 @@ ul {
 
 /*UI components*/
 
+/* Social links */
+.social {
+  height: 107px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.social_line {
+  width: 125px;
+  height: 20px;
+  flex-direction: row;
+}
+
+.social__link {
+  display: block;
+  width: 20px;
+  background-repeat: no-repeat;
+  transition: .5s;
+}
+
+.social__link:hover {
+  transform: scale(1.2);
+}
+
+.social__link_insta {
+  height: 20px;
+  background-image: url(../../assets/images/insta.svg);
+}
+
+.social__link_twitter {
+  height: 17px;
+  background-image: url(../../assets/images/twitter.svg);
+}
+
+.social__link_youtube {
+  height: 14px;
+  background-image: url(../../assets/images/youtube.svg);
+}
+
+.social__link_vk {
+  height: 12px;
+  background-image: url(../../assets/images/vk.svg);
+}
+
 /*Slider*/
 .slider {
   position: relative;
@@ -421,12 +466,12 @@ input[type=range]::-moz-range-thumb {
 /*Container*/
 .container {
   width: 1620px;
-  margin-left: 26px;
+  margin-left: 15px;
 }
 
 .small-container {
   width: 1200px;
-  margin-left: 23px;
+  margin-left: 15px;
 }
 
 .small-container_column {
@@ -517,6 +562,7 @@ line-height: 19px;
 }
 
 .theme-toggle {
+  position: relative;
   cursor: pointer;
   width: 54px;
   height: 30px;
@@ -528,11 +574,21 @@ line-height: 19px;
 }
 
 .theme-toggle__btn {
+  position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: var(--bg-theme-toggle-btn);
   box-shadow: var(--shadow-theme-toggle-btn);
+  transition: .5s;
+}
+
+.theme-toggle__checkbox {
+  display: none;
+}
+
+.theme-toggle__checkbox:checked + .theme-toggle__btn {
+  transform: translateX(22px);
 }
 
 /*Map*/
@@ -604,7 +660,7 @@ line-height: 19px;
 }
 
 .logos_mb {
-  margin-bottom: 67px;
+  margin-bottom: 62px;
 }
 
 .logo_footer {
@@ -768,7 +824,7 @@ input::-moz-placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 138px;
+  margin-right: 140px;
 }
 
 .footer-nav__link {
@@ -782,7 +838,7 @@ input::-moz-placeholder {
 }
 
 .watch-btn_footer {
-  width: 279px;
+  width: 275px;
 }
 
 .contacts {
