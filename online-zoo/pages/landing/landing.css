@@ -693,7 +693,6 @@ line-height: 19px;
 }
 
 .banner-slider__img_active + .banner-slider__slider-item-content {
-  /* bottom: 38px; */
   animation: bannerMove  1s ;
   animation-fill-mode: forwards;
 }
@@ -724,11 +723,11 @@ line-height: 19px;
 
 .banner-slider__img_active + .banner-slider__slider-item-content + .shadow {
   position: absolute;
-  top: -2px;
+  top: -4px;
   left: 0;
   z-index: 1;
   width: 100%;
-  height: 99%;
+  height: 100%;
   background-color: var(--shdow-card);
   border-radius: 8px;
 }
@@ -912,7 +911,6 @@ line-height: 19px;
 }
 
 /*Pay and feed*/
-
 .pay-and-feed {
   width: 100%;
   display: flex;
@@ -1013,7 +1011,6 @@ line-height: 19px;
 }
 
 /*Testimonials*/
-
 .testimonials {
   width: 100%;
   display: flex;
