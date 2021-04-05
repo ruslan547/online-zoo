@@ -1,0 +1,204 @@
+:root {
+  --gradient-light-color: #4ad7be;
+  --gradient-durk-color: #49d6da;
+  --base-light-color: #fff;
+  --base-durk-color: #333333;
+  --primary-light-color: #f2f2f2;
+  --primary-durk-color: #4f4f4f;
+  --primary-midle-color: #828282;
+  --toggle-btn-durk-color: #1b1b1b;
+  --toggle-durk-color: #505050;
+  --bg-range-color: rgba(189, 189, 189, .57);
+  --shadow-toggle-light: 2px 4px 15px rgba(6, 12, 70, 0.15);
+  --shadow-toggle-durk: 2px 4px 15px rgba(230, 230, 230, 0.15);
+  --shadow-range: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  --arrow-durk-color: #828282;
+  --shdow-card: rgba(0, 0, 0, .5);
+  --shadow-testim-card: 2px 4px 15px rgba(6, 12, 70, 0.1);
+  --bg-form: #bdbdbd;
+  --main-gradient: linear-gradient(to right, var(--gradient-light-color), var(--gradient-durk-color));
+  --bg-first: var(--base-light-color);
+  --bg-second: var(--primary-light-color);
+  --fg-header: var(--base-durk-color);
+  --bg-theme-toggle-btn: var(--base-light-color);
+  --bg-theme-toggle: var(--primary-light-color);
+  --shadow-theme-toggle-btn: var(--shadow-toggle-light);
+  --fg-title: var(--base-durk-color);
+  --fg-text: var(--primary-durk-color);
+  --fg-fraction: var(--base-durk-color);
+  --bg-thumb: var(--base-durk-color);
+  --bg-arrow: var(--arrow-durk-color);
+  --fg-pay-instruct: var(--primary-durk-color);
+  --bg-border-avatar: var(--primary-durk-color);
+  --bg-map-card: var(--base-light-color);
+  --fg-map-card: var(--base-durk-color);
+
+  --shadow-popap: 0px 4px 24px rgba(0, 0, 0, 0.19);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Watch button */
+.watch-btn {
+  cursor: pointer;
+  width: 245px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--base-light-color);
+  background: var(--main-gradient);
+  border-radius: 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: .5s;
+}
+
+.watch-btn:hover {
+  transform: scale(1.1);
+}
+
+/*Popap*/
+.popap-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popap {
+  width: 1200px;
+  height: 795px;
+  display: flex;
+  box-shadow: var(--shadow-popap);
+}
+
+.popap-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding-top: 100px;
+  box-sizing: border-box;
+  color: var(--primary-midle-color);
+}
+
+.popap-content__title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 116.5%;
+  text-transform: uppercase;
+  color: var(--base-durk-color);
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.popap-content__text {
+  width: 478px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 116.5%;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.popap-form {
+  width: 725px;
+  margin-bottom: 21px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popap-form__title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 116.5%;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--primary-durk-color);
+}
+
+.popap-form__fieldset {
+  width: 335px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid var(--primary-midle-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.popap-form__leagend {
+  position: relative;
+  left: 8px;
+  z-index: 1;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 116.5%;
+}
+
+.popap-form__leagend::after {
+  content: '';
+  width: 36px;
+  height: 3px;
+  position: absolute;
+  top: 8px;
+  right: -18px;
+  z-index: -1;
+  background-color: var(--base-light-color);
+}
+
+.popap-form__fieldset_first {
+  margin-bottom: 40px;
+}
+
+.popap-form__field {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.popap-form__separator {
+  width: 22px;
+  height: 32px;
+  border-right: 1px solid var(--primary-midle-color);
+  margin-right: 18px;
+}
+
+.popap-form__simple-select {
+  width: 35px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin-left: 11px;
+}
+
+.popap-form__select {
+  -webkit-appearance: none;
+  background: url(../../assets/images/select-arrow.svg) no-repeat right;
+}
+
+.popap-form__select_animal {
+  background-position-x: 291px;
+}
+
+.popap-form__select_animal {
+  background-position-x: 291px;
+}
+
+.popap-form__select_data {
+  background-position-x: 120px;
+}
