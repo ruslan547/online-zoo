@@ -172,7 +172,6 @@ ul {
 }
 
 .slider__item_selected:hover {
-  cursor: alias;
   position: relative;
   width: 108px;
   height: 108px;
@@ -336,10 +335,12 @@ input[type=range]::-moz-range-thumb {
   padding-top: 15px;
   box-sizing: border-box;
   background-image: url(../../assets/images/mark.svg);
+  transition: .5s;
 }
 
 .mark:hover {
   cursor: pointer;
+  background-image: url(../../assets/images/active-makr.svg);
 }
 
 .mark_selected {
