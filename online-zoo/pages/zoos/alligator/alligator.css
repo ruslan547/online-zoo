@@ -557,6 +557,7 @@ line-height: 19px;
   display: flex;
   flex-direction: column;
   color: var(--base-light-color);
+  text-decoration: none;
 }
 
 .yem-digital {
