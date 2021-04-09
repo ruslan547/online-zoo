@@ -22,7 +22,7 @@
             <span class="logo__online">online</span>
           </a>
         </h1>
-        <nav>
+        <nav class="nav">
           <ul class="nav-list">
             <li class="nav-list__item">
               <a class="nav-list__link nav-list__link_active" href="#">about</a>
@@ -41,10 +41,15 @@
             </li>
           </ul>
         </nav>
-        <label class="theme-toggle" for="toggle">
-          <input class="theme-toggle__checkbox" id="toggle" type="checkbox">
-          <div class="theme-toggle__btn"></div>
-        </label>
+        <div class="btns">
+          <label class="theme-toggle" for="toggle">
+            <input class="theme-toggle__checkbox" id="toggle" type="checkbox">
+            <div class="theme-toggle__btn"></div>
+          </label>
+          <div class="nav-btn">
+            <div class="nav-btn__line"></div>
+          </div>
+        </div>
       </div>
     </header>
     <main class="main">
@@ -440,7 +445,7 @@
           <div class="testimonials__slider slider">
             <div class="slider-arrow slider-arrow_left"></div>
             <ul class="slider__list">
-              <li class="slider__item">
+              <li class="slider__item slider__item_ruined">
                 <article class="testimonial-card">
                   <div class="testimonial-card__avatar">
                     <img src="../../assets/images/user.svg" alt="" class="testimonial-card__img">
@@ -557,6 +562,20 @@
               </li>
               <li class="logos__item">
                 <img src="../../assets/images/rs_school.svg" alt="" class="rs-school" title="Rolling Scopes School">
+              </li>
+            </ul>
+            <ul class="footer-nav footer-nav_vertical">
+              <li class="footer-nav__item">
+                <a href="./landing.html" class="footer-nav__link">about</a>
+              </li>
+              <li class="footer-nav__item">
+                <a href="../zoos/panda/panda.html" class="footer-nav__link">zoos</a>
+              </li>
+              <li class="footer-nav__item">
+                <a href="../map/map.html" class="footer-nav__link">map</a>
+              </li>
+              <li class="footer-nav__item">
+                <a href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" class="footer-nav__link">design</a>
               </li>
             </ul>
             <a href="#" name="contact"></a>
