@@ -884,6 +884,14 @@ line-height: 19px;
 
 }
 
+@media screen and (max-width: 1199px) {
+
+  .banner__content {
+    padding-top: 123px;
+  }
+
+}
+
 @media screen and (max-width: 639px) {
 
   .banner__content {
@@ -930,7 +938,7 @@ line-height: 19px;
     width: 599px;
     font-size: 64px;
     line-height: 75px;
-    margin-bottom: 26px;
+    margin-bottom: 29px;
   }
 
 }
@@ -958,7 +966,7 @@ line-height: 19px;
 @media screen and (max-width: 1919px) {
 
   .banner-slider {
-    width: 1220px;
+    width: 1224px;
     left: 326px;
   }
 
@@ -967,7 +975,7 @@ line-height: 19px;
 @media screen and (max-width: 1199px) {
 
   .banner-slider {
-    width: 1155px;
+    width: 1166px;
     left: 29px;
   }
 
@@ -976,7 +984,7 @@ line-height: 19px;
 @media screen and (max-width: 639px) {
 
   .banner-slider {
-    width: 628px;
+    width: 629px;
     height: 278px;
     left: 14px;
   }
@@ -1067,11 +1075,19 @@ line-height: 19px;
   align-items: center;
 }
 
+@media screen and (max-width: 1919px) {
+
+  .banner-slider__item {
+    margin-right: 30px;
+  }
+
+}
+
 @media screen and (max-width: 1199px) {
 
   .banner-slider__item {
-    height: 398px;
-    margin-right: 29px;
+    height: 379px;
+    margin-right: 32px;
   }
 
 }
@@ -1185,7 +1201,7 @@ line-height: 19px;
 @media screen and (max-width: 1919px) {
 
   .banner-slider__container {
-    bottom: 21px;
+    bottom: 12px;
   }
 
 }
@@ -1203,6 +1219,15 @@ line-height: 19px;
 }
 
 @media screen and (max-width: 1199px) {
+
+  .banner-slider__item_active {
+    width: 247px;
+    top: 0;
+  }
+
+}
+
+@media screen and (max-width: 639px) {
 
   .banner-slider__item_active {
     width: 140px;
@@ -1281,7 +1306,7 @@ line-height: 19px;
 
 .banner-slider__progress {
   position: absolute;
-  bottom: -6px;
+  bottom: 4px;
   left: 324px;
 }
 
@@ -1289,6 +1314,7 @@ line-height: 19px;
 
   .banner-slider__progress {
     left: 354px;
+    bottom: -6px;
   }
 
 }
@@ -1433,6 +1459,22 @@ line-height: 19px;
 
 .how-it-works__img_once {
   display: none;
+}
+
+.how-it-works__img_mini-deers {
+  display: none;
+}
+
+@media screen and (max-width: 1919px) {
+
+  .how-it-works__img {
+    display: none;
+  }
+
+  .how-it-works__img_mini-deers {
+    display: inline;
+  }
+
 }
 
 @media screen and (max-width: 639px) {
@@ -1625,7 +1667,7 @@ line-height: 19px;
 @media screen and (max-width: 1919px) {
 
   .pets-in-zoo__title {
-    margin-bottom: 23px;
+    margin-bottom: 25px;
   }
 
 }
@@ -1708,6 +1750,15 @@ line-height: 19px;
 
 .main-slider__right-arrow {
   right: -47px;
+}
+
+@media screen and (max-width: 1919px) {
+
+  .main-slider__left-arrow,
+  .main-slider__right-arrow {
+    top: calc(50% - 21px);
+  }
+
 }
 
 .pets-in-zoo__progress {
@@ -1884,6 +1935,16 @@ line-height: 19px;
 }
 
 @media screen and (max-width: 1919px) {
+
+  .pay-and-feed__text {
+    width: 678px;
+    margin-bottom: 49px;
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width: 1199px) {
 
   .pay-and-feed__text {
     width: 538px;
@@ -2093,7 +2154,7 @@ line-height: 19px;
 @media screen and (max-width: 1919px) {
 
   .testimonial-card {
-    width: 436px;
+    width: 440px;
     padding: 47px 55px;
   }
 
