@@ -21,7 +21,7 @@
           <span class="logo__online">online</span>
         </a>
       </h1>
-      <nav>
+      <nav class="nav">
         <ul class="nav-list">
           <li class="nav-list__item">
             <a class="nav-list__link" href="../landing/landing.html">about</a>
@@ -40,10 +40,15 @@
           </li>
         </ul>
       </nav>
-      <label class="theme-toggle" for="toggle">
-        <input class="theme-toggle__checkbox" id="toggle" type="checkbox">
-        <div class="theme-toggle__btn"></div>
-      </label>
+      <div class="btns">
+        <label class="theme-toggle" for="toggle">
+          <input class="theme-toggle__checkbox" id="toggle" type="checkbox">
+          <div class="theme-toggle__btn"></div>
+        </label>
+        <div class="nav-btn">
+          <div class="nav-btn__line"></div>
+        </div>
+      </div>
     </div>
   </header>
   <main class="main">
@@ -127,10 +132,12 @@
         <div class="left-content">
           <ul class="logos logos_mb">
             <li class="logos__item">
-              <a href="../landing/landing.html" class="logo logo_footer" title="Online Zoo">
-                <span class="logo__zoo">zoo</span>
-                <span class="logo__online">online</span>
-              </a>
+              <div class="logo logo_footer">
+                <a class="logo__link" href="../landing/landing.html">
+                  <span class="logo__zoo">zoo</span>
+                  <span class="logo__online">online</span>
+                </a>
+              </div>
             </li>
             <li class="logos__item">
               <img src="../../assets/images/yem-digital.svg" alt="" class="yem-digital" title="Yem Digital">
@@ -139,7 +146,21 @@
               <img src="../../assets/images/rs_school.svg" alt="" class="rs-school" title="Rolling Scopes School">
             </li>
           </ul>
-          <a href="" name="contact"></a>
+          <ul class="footer-nav footer-nav_vertical">
+            <li class="footer-nav__item">
+              <a href="../landing/landing.html" class="footer-nav__link">about</a>
+            </li>
+            <li class="footer-nav__item">
+              <a href="../zoos/panda/panda.html" class="footer-nav__link">zoos</a>
+            </li>
+            <li class="footer-nav__item">
+              <a href="./map.html" class="footer-nav__link">map</a>
+            </li>
+            <li class="footer-nav__item">
+              <a href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" class="footer-nav__link">design</a>
+            </li>
+          </ul>
+          <a href="#" name="contact"></a>
           <form action="" class="contact-form">
             <h3 class="contact-form__title">Contact us</h3>
             <input type="text" class="contact-form__name" placeholder="Name" required>
@@ -158,7 +179,7 @@
           </form>
         </div>
         <div class="right-content">
-          <div class="nav-and-btn">
+          <div class="nav-and-contacts">
             <ul class="footer-nav">
               <li class="footer-nav__item">
                 <a href="../landing/landing.html" class="footer-nav__link">about</a>
@@ -167,41 +188,41 @@
                 <a href="../zoos/panda/panda.html" class="footer-nav__link">zoos</a>
               </li>
               <li class="footer-nav__item">
-                <a href="./map.html" class="footer-nav__link">map</a>
+                <a href="../map/map.html" class="footer-nav__link">map</a>
               </li>
               <li class="footer-nav__item">
                 <a href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" class="footer-nav__link">design</a>
               </li>
             </ul>
-            <a href="#" class="watch-btn watch-btn_footer">
-              donate for volunteers
-            </a>
+            <article class="contacts">
+              <h4 class="contacts__title">ZOO Online Centre</h4>
+              <address class="address">
+                <div class="address__text">
+                  <span class="address__span_mb">132, Address District, Street</span>
+                  <span>Open Daily 10:00 am - 5:00 pm</span>
+                </div>
+                <a class="address__link address__link_mb" href="tel:+3757021633433">T(702) 163-3433</a>
+                <a class="address__link" href="mailto:zoo.online@gmail.com">zoo.online@gmail.com</a>
+              </address>
+              <ul class="social social_line">
+                <li class="social__item">
+                  <a class="social__link social__link_insta" href="https://www.instagram.com/"></a>
+                </li>
+                <li class="social__item">
+                  <a class="social__link social__link_twitter" href="https://twitter.com/"></a>
+                </li>
+                <li class="social__item">
+                  <a class="social__link social__link_vk" href="https://vk.com/"></a>
+                </li>
+                <li class="social__item">
+                  <a class="social__link social__link_youtube" href="https://www.youtube.com/"></a>
+                </li>
+              </ul>
+            </article>
           </div>
-          <article class="contacts">
-            <h4 class="contacts__title">ZOO Online Centre</h4>
-            <address class="address">
-              <div class="address__text">
-                <span class="address__span_mb">132, Address District, Street</span>
-                <span>Open Daily 10:00 am - 5:00 pm</span>
-              </div>
-              <a class="address__link address__link_mb" href="tel:+3757021633433">T(702) 163-3433</a>
-              <a class="address__link" href="mailto:zoo.online@gmail.com">zoo.online@gmail.com</a>
-            </address>
-            <ul class="social social_line">
-              <li class="social__item">
-                <a class="social__link social__link_insta" href="https://www.instagram.com/"></a>
-              </li>
-              <li class="social__item">
-                <a class="social__link social__link_twitter" href="https://twitter.com/"></a>
-              </li>
-              <li class="social__item">
-                <a class="social__link social__link_vk" href="https://vk.com/"></a>
-              </li>
-              <li class="social__item">
-                <a class="social__link social__link_youtube" href="https://www.youtube.com/"></a>
-              </li>
-            </ul>
-          </article>
+          <a href="#" class="watch-btn watch-btn_footer">
+            donate for volunteers
+          </a>
         </div>
       </div>
       <hr class="footer-hr">
