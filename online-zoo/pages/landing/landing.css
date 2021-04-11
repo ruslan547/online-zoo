@@ -3009,6 +3009,7 @@ input::-moz-placeholder {
 
 /*verticle-nav*/
 .footer-nav_vertical {
+  width: 100%;
   display: none;
 }
 
