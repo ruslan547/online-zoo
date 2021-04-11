@@ -132,9 +132,10 @@ ul {
   align-items: center;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1919px) {
 
   .slider__list {
+    height: 100%;
     overflow: hidden;
   }
 
