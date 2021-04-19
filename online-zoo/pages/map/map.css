@@ -56,6 +56,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  position: relative;
 }
 
 button, input[type="submit"] {
@@ -894,7 +895,6 @@ input[type=range]::-moz-range-thumb {
 /* Components */
 
 /* Header */
-
 .header {
   position: relative;
   width: 100%;
@@ -902,6 +902,17 @@ input[type=range]::-moz-range-thumb {
   justify-content: center;
   background-color: var(--bg-first);
   box-shadow: var(--shadow-header);
+}
+
+@media screen and (max-width: 1199px) {
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+
 }
 
 .header__container {
@@ -1037,6 +1048,14 @@ line-height: 19px;
 }
 
 /*Map*/
+@media screen and (max-width: 1199px) {
+
+  .main {
+    margin-top: 94px;
+  }
+
+}
+
 .map {
   width: 100%;
   display: flex;

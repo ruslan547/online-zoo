@@ -53,6 +53,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  position: relative;
 }
 
 button, input[type="submit"] {
@@ -625,12 +626,22 @@ input[type=range]::-moz-range-thumb {
 /* Components */
 
 /* Header */
-
 .header {
   width: 100%;
   display: flex;
   justify-content: center;
   background-color: var(--bg-first);
+}
+
+@media screen and (max-width: 1199px) {
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+
 }
 
 .header__container {
@@ -766,6 +777,14 @@ line-height: 19px;
   display: flex;
   justify-content: center;
   background-color: var(--bg-second);
+}
+
+@media screen and (max-width: 1199px) {
+
+  .watch-animal {
+    margin-top: 94px;
+  }
+
 }
 
 .banner {

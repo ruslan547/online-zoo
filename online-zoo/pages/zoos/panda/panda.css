@@ -57,6 +57,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  position: relative;
 }
 
 button, input[type="submit"] {
@@ -565,6 +566,17 @@ ul {
   box-shadow: var(--shadow-header);
 }
 
+@media screen and (max-width: 1199px) {
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+
+}
+
 .header__container {
   height: 94px;
   display: flex;
@@ -691,6 +703,14 @@ line-height: 19px;
 .main {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 1199px) {
+
+  .main {
+    margin-top: 94px;
+  }
+
 }
 
 .main-wrapper {
