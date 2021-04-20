@@ -904,7 +904,7 @@ input[type=range]::-moz-range-thumb {
   box-shadow: var(--shadow-header);
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 640px) {
 
   .header {
     position: fixed;
@@ -1085,7 +1085,7 @@ line-height: 19px;
 }
 
 /*Map*/
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 640px) {
 
   .main {
     margin-top: 94px;

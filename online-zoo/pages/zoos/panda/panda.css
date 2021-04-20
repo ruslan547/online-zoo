@@ -566,7 +566,7 @@ ul {
   box-shadow: var(--shadow-header);
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 640px) {
 
   .header {
     position: fixed;
@@ -752,7 +752,7 @@ line-height: 19px;
   justify-content: center;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 640px) {
 
   .main {
     margin-top: 94px;
