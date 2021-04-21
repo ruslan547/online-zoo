@@ -650,7 +650,16 @@ input[type=range]::-moz-range-thumb {
 @media screen and (max-width: 1199px) {
 
   .mark_ponda {
-    top: 6px;
+    top: 12px;
+    right: 105px;
+  }
+
+}
+
+@media screen and (max-width: 639px) {
+
+  .mark_ponda {
+    top: 7px;
     right: 50px;
   }
 
@@ -1106,7 +1115,15 @@ line-height: 19px;
 @media screen and (max-width: 1919px) {
 
   .map {
-    padding-bottom: 80px;
+    padding-bottom: 100px;
+  }
+
+}
+
+@media screen and (max-width: 1199px) {
+
+  .map {
+    padding-bottom: 79px;
   }
 
 }
