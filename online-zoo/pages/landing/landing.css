@@ -15,6 +15,7 @@
   --shdow-card: rgba(0, 0, 0, .5);
   --shadow-testim-card: 2px 4px 15px rgba(6, 12, 70, 0.1);
   --bg-form: #bdbdbd;
+  --dirty-color: #3b3b3b;
   --main-gradient: linear-gradient(to right, var(--gradient-light-color), var(--gradient-durk-color));
   --bg-first: var(--base-light-color);
   --bg-second: var(--primary-light-color);
@@ -31,9 +32,10 @@
   --bg-border-avatar: var(--primary-durk-color);
   --bg-map-card: var(--base-light-color);
   --fg-map-card: var(--base-durk-color);
+  --bg-testimoial-card: var(--base-light-color);
 }
 
-:root[theme="durk"] {
+:root[theme='durk'] {
   --bg-first: var(--base-durk-color);
   --bg-second: var(--primary-durk-color);
   --fg-header: var(--base-light-color);
@@ -49,6 +51,7 @@
   --bg-border-avatar: var(--base-light-color);
   --bg-map-card: var(--base-durk-color);
   --fg-map-card: var(--base-light-color);
+  --bg-testimoial-card: var(--dirty-color);
 }
 
 body {
@@ -1707,6 +1710,7 @@ line-height: 19px;
   justify-content: center;
   padding: 100px 0 100px;
   box-sizing: border-box;
+  background-color: var(--bg-first);
 }
 
 @media screen and (max-width: 639px) {
@@ -2212,6 +2216,7 @@ line-height: 19px;
   border-radius: 5px;
   padding: 47px 74px;
   box-sizing: border-box;
+  background-color: var(--bg-testimoial-card);
 }
 
 @media screen and (max-width: 1919px) {
