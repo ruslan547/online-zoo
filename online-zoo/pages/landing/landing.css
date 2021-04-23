@@ -16,6 +16,10 @@
   --shadow-testim-card: 2px 4px 15px rgba(6, 12, 70, 0.1);
   --bg-form: #bdbdbd;
   --dirty-color: #3b3b3b;
+  --usual-map: url(../../assets/images/map.svg);
+  --usual-durk-map: url(../../assets/images/durk-map.svg);
+  --mini-map: url(../../assets/images/mini-map.png);
+  --mini-durk-map: url(../../assets/images/mini-durk-map.svg);
   --main-gradient: linear-gradient(to right, var(--gradient-light-color), var(--gradient-durk-color));
   --bg-first: var(--base-light-color);
   --bg-second: var(--primary-light-color);
@@ -33,6 +37,8 @@
   --bg-map-card: var(--base-light-color);
   --fg-map-card: var(--base-durk-color);
   --bg-testimoial-card: var(--base-light-color);
+  --bg-usual-map-screen: var(--usual-map);
+  --bg-mini-map-screen: var(--mini-map);
 }
 
 :root[theme='durk'] {
@@ -52,6 +58,8 @@
   --bg-map-card: var(--base-durk-color);
   --fg-map-card: var(--base-light-color);
   --bg-testimoial-card: var(--dirty-color);
+  --bg-usual-map-screen: var(--usual-durk-map);
+  --bg-mini-map-screen: var(--mini-durk-map);
 }
 
 body {
@@ -1502,6 +1510,7 @@ line-height: 19px;
 
 .how-it-works__img {
   margin-bottom: 25px;
+  border-radius: 6px;
 }
 
 @media screen and (max-width: 1919px) {
@@ -1870,6 +1879,10 @@ line-height: 19px;
   animation: move  .5s ;
   animation-fill-mode: forwards;
   z-index: 2;
+}
+
+.slider-card__img {
+  border-radius: 6px;
 }
 
 @media screen and (max-width: 1919px) {
@@ -2379,7 +2392,7 @@ line-height: 19px;
   position: relative;
   width: 1200px;
   height: 498px;
-  background-image: url(../../assets/images/map.svg);
+  background-image: var(--bg-usual-map-screen);
 }
 
 @media screen and (max-width: 1919px) {
@@ -2387,7 +2400,7 @@ line-height: 19px;
   .map-screen {
     width: 900px;
     height: 436px;
-    background-image: url(../../assets/images/mini-map.png);
+    background-image: var(--bg-mini-map-screen);
   }
 
 }
