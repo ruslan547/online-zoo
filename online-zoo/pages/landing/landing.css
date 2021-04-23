@@ -20,6 +20,10 @@
   --usual-durk-map: url(../../assets/images/durk-map.svg);
   --mini-map: url(../../assets/images/mini-map.png);
   --mini-durk-map: url(../../assets/images/mini-durk-map.svg);
+  --tablet-map: url(../../assets/images/tablet-map.svg);
+  --tablet-durk-map: url(../../assets/images/tablet-durk-map.svg);
+  --mobil-map: url(../../assets/images/mobil-map.svg);
+  --mobil-durk-map: url(../../assets/images/mobil-durk-map.svg);
   --main-gradient: linear-gradient(to right, var(--gradient-light-color), var(--gradient-durk-color));
   --bg-first: var(--base-light-color);
   --bg-second: var(--primary-light-color);
@@ -39,6 +43,8 @@
   --bg-testimoial-card: var(--base-light-color);
   --bg-usual-map-screen: var(--usual-map);
   --bg-mini-map-screen: var(--mini-map);
+  --bg-tablet-map-screen: var(--tablet-map);
+  --bg-mobil-map-screen: var(--mobil-map);
 }
 
 :root[theme='durk'] {
@@ -60,6 +66,8 @@
   --bg-testimoial-card: var(--dirty-color);
   --bg-usual-map-screen: var(--usual-durk-map);
   --bg-mini-map-screen: var(--mini-durk-map);
+  --bg-tablet-map-screen: var(--tablet-durk-map);
+  --bg-mobil-map-screen: var(--mobil-durk-map);
 }
 
 body {
@@ -1862,7 +1870,7 @@ line-height: 19px;
   padding-left: 22px;
 }
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 1199px) {
 
   .main-slider__slider-item-content {
     padding-left: 9px;
@@ -1919,7 +1927,7 @@ line-height: 19px;
   to {bottom: 48px;}
 }
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 1199px) {
 
   @keyframes move {
     from {bottom: -105px;}
@@ -2410,7 +2418,7 @@ line-height: 19px;
   .map-screen {
     width: 599px;
     height: 289px;
-    background-image: url(../../assets/images/tablet-map.svg);
+    background-image: var(--bg-tablet-map-screen);
   }
 
 }
@@ -2420,7 +2428,7 @@ line-height: 19px;
   .map-screen {
     width: 300px;
     height: 146px;
-    background-image: url(../../assets/images/mobil-map.svg);
+    background-image: var(--bg-mobil-map-screen);
   }
 
 }

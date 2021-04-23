@@ -8,7 +8,6 @@ themeToggle.addEventListener('click', handleThemeToggleClick);
 
 initTheme();
 
-
 function handlerBannerSliderClick({ target }) {
   if (target.classList.contains('banner-slider__img')) {
     bannerSliderImgs.forEach(item => item.classList.remove('banner-slider__img_active'));
@@ -23,18 +22,15 @@ function handleThemeToggleClick({ target }) {
     return;
   }
 
-  const attribute = document.documentElement.getAttribute('theme') === 'durk' ? 'light' : 'durk';
+  const root = document.documentElement;
+  const attribute = root.getAttribute('theme') === 'durk' ? 'light' : 'durk';
 
-  document.documentElement.setAttribute('theme', attribute);
+  root.setAttribute('theme', attribute);
   localStorage.setItem('theme', attribute);
 }
 
 function initTheme() {
-  const theme = localStorage.getItem('theme');
-
-  if (!theme) {
-    theme = 'light';
-  }
+  const theme = localStorage.getItem('theme') ?? 'light';
 
   document.documentElement.setAttribute('theme', theme);
   toggle.checked = theme === 'durk';
