@@ -38,8 +38,13 @@ function handleListClick({ target }) {
 }
 
 function next(target) {
+  const prevLineCircle = document.querySelector('.line-circle_prev');
   const nexts = Array.from(document.querySelectorAll('.banner-slider__item_next'));
   const numberNext = nexts.indexOf(target);
+
+  if (!prevLineCircle.classList.contains('line-circle_hide')) {
+    prevLineCircle.classList.add('line-circle_hide');
+  }
 
   for (let i = 0; i <= numberNext; i++) {
     const prev = document.querySelector('.banner-slider__item_prev');
@@ -74,7 +79,6 @@ function prev() {
   const prev = document.querySelector('.banner-slider__item_prev');
 
   nexts.reverse().forEach((item, index) => {
-    console.log(nexts.length - index)
     item.classList.add('next' + (nexts.length - index));
     item.classList.remove('next' + (nexts.length - 1 - index));
   });
@@ -88,6 +92,8 @@ function prev() {
   if (hides.length) {
     hides.item(hides.length - 1).classList.add('banner-slider__item_prev');
     hides.item(hides.length - 1).classList.remove('banner-slider__item_hide');
+  } else {
+    document.querySelector('.line-circle_prev').classList.remove('line-circle_hide');
   }
 }
 
