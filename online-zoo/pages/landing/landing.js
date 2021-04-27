@@ -50,6 +50,9 @@ function next(target) {
     const prev = document.querySelector('.banner-slider__item_prev');
     const act = document.querySelector('.banner-slider__item_act');
     const curNext = document.querySelector('.next0');
+    const nextLineCircle0 = document.querySelector('.line-circle_next0');
+    const nextLineCircle1 = document.querySelector('.line-circle_next1');
+    const nextLineCircle2 = document.querySelector('.line-circle_next2');
 
     if (prev) {
       prev.classList.add('banner-slider__item_hide');
@@ -65,6 +68,18 @@ function next(target) {
 
     const nexts = Array.from(document.querySelectorAll('.banner-slider__item_next'));
 
+    if (nexts.length === 2 && nextLineCircle2.classList.contains('line-circle_hide')) {
+      nextLineCircle2.classList.remove('line-circle_hide');
+    }
+
+    if (nexts.length === 1 && nextLineCircle1.classList.contains('line-circle_hide')) {
+      nextLineCircle1.classList.remove('line-circle_hide');
+    }
+
+    if (nexts.length === 0 && nextLineCircle0.classList.contains('line-circle_hide')) {
+      nextLineCircle0.classList.remove('line-circle_hide');
+    }
+
     nexts.forEach((item, index) => {
       item.classList.add('next' + index);
       item.classList.remove('next' + (index + 1));
@@ -77,6 +92,21 @@ function prev() {
   const nexts = Array.from(document.querySelectorAll('.banner-slider__item_next'));
   const act = document.querySelector('.banner-slider__item_act');
   const prev = document.querySelector('.banner-slider__item_prev');
+  const nextLineCircle0 = document.querySelector('.line-circle_next0');
+  const nextLineCircle1 = document.querySelector('.line-circle_next1');
+  const nextLineCircle2 = document.querySelector('.line-circle_next2');
+
+  if (nexts.length === 0 && !nextLineCircle0.classList.contains('line-circle_hide')) {
+    nextLineCircle0.classList.add('line-circle_hide');
+  }
+
+  if (nexts.length === 1 && !nextLineCircle1.classList.contains('line-circle_hide')) {
+    nextLineCircle1.classList.add('line-circle_hide');
+  }
+
+  if (nexts.length === 2 && !nextLineCircle2.classList.contains('line-circle_hide')) {
+    nextLineCircle2.classList.add('line-circle_hide');
+  }
 
   nexts.reverse().forEach((item, index) => {
     item.classList.add('next' + (nexts.length - index));

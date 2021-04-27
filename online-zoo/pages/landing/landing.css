@@ -1117,6 +1117,7 @@ line-height: 19px;
   height: 13px;
   border-radius: 50%;
   border: 1px solid var(--base-light-color);
+  transition: 1s;
 }
 
 .line-circle::after {
@@ -1132,7 +1133,18 @@ line-height: 19px;
 
 .line-circle_prev {
   left: 194px;
-  transition: 1s;
+}
+
+.line-circle_next0 {
+  left: 674px;
+}
+
+.line-circle_next1 {
+  left: 858px;
+}
+
+.line-circle_next2 {
+  left: 1042px;
 }
 
 .line-circle_hide {
