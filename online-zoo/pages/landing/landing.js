@@ -1,7 +1,6 @@
 const bannerSliderList = document.querySelector('.banner-slider__list');
 const themeToggle = document.querySelector('.theme-toggle');
 const bannerSliderRange = document.querySelector('.banner-slider__range');
-let curBannerSliderValue = 2;
 
 themeToggle.addEventListener('click', handleThemeToggleClick);
 bannerSliderList.addEventListener('click', handleListClick);
@@ -173,13 +172,10 @@ function handleBannerSliderRangeInput() {
       }
     }
 
-    if (value > curBannerSliderValue) {
-      removeNext();
-    }
 
+    removeNext();
     setPrevLineCircle();
     setNextLineCircles();
-    curBannerSliderValue = value;
   });
 }
 
