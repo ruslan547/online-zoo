@@ -1,6 +1,7 @@
 const bannerSliderList = document.querySelector('.banner-slider__list');
 const themeToggle = document.querySelector('.theme-toggle');
 const bannerSliderRange = document.querySelector('.banner-slider__range');
+let curBannerSliderValue = 2;
 
 themeToggle.addEventListener('click', handleThemeToggleClick);
 bannerSliderList.addEventListener('click', handleListClick);
@@ -155,8 +156,8 @@ function handleBannerSliderRangeInput() {
 
     if (index > value) {
       if (!item.classList.contains('banner-slider__item_next')) {
-        item.classList.add('banner-slider__item_next');
-        item.classList.add('next' + getIndexCurrentNext(item));
+        addNext();
+        item.classList.add('banner-slider__item_next', 'next0');
       }
 
       if (item.classList.contains('banner-slider__item_act')) {
@@ -172,9 +173,13 @@ function handleBannerSliderRangeInput() {
       }
     }
 
-    removeNext();
+    if (value > curBannerSliderValue) {
+      removeNext();
+    }
+
     setPrevLineCircle();
     setNextLineCircles();
+    curBannerSliderValue = value;
   });
 }
 
