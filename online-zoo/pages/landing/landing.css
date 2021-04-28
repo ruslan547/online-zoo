@@ -2044,7 +2044,7 @@ line-height: 19px;
 
 }
 
-.slider-card:hover .slider-item-content {
+.main-slider__item.active .slider-item-content {
   position: absolute;
   animation: move  .5s ;
   animation-fill-mode: forwards;
@@ -2125,7 +2125,7 @@ line-height: 19px;
   left: 0;
 }
 
-.slider-card:hover .shadow{
+.main-slider__item.active .shadow{
   position: absolute;
   top: 0;
   left: 0;

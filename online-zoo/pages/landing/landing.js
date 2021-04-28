@@ -262,7 +262,7 @@ function setBannerSliderFactionValue(value) {
 
 ///////////////////////////////////////////
 //Main-slider
-function Ant() {
+function MainSlider() {
   this.crslList = document.querySelector('.main-slider__list');
   this.crslElements = document.querySelectorAll('.main-slider__item');
   this.crslElemFirst = document.querySelector('.main-slider__item');
@@ -271,206 +271,132 @@ function Ant() {
   this.range = document.querySelector('.main-slider__range');
   this.rangeValue = document.querySelector('.main-slider__range-value');
 
-  // Initialization
-  this.options = Ant.defaults;
-  Ant.initialize(this)
+  this.rightItem = 3;
+
+  MainSlider.initialize(this)
 };
 
-Ant.defaults = {
-
-  // Default options for the carousel
-  elemVisible: 4, // Кол-во отображаемых элементов в карусели
-  loop: true,     // Бесконечное зацикливание карусели
-  auto: true,     // Автоматическая прокрутка
-  interval: 5000, // Интервал между прокруткой элементов (мс)
-  speed: 750,     // Скорость анимации (мс)
-  touch: true,    // Прокрутка  прикосновением
-  arrows: true,   // Прокрутка стрелками
-  range: true,
-};
-
-Ant.prototype.elemPrev = function (num) {
+MainSlider.prototype.elemPrev = function (num) {
+  // this.crslElements.item(this.activeItem).classList.remove('active');
+  // this.activeItem--;
+  // this.crslElements.item(this.activeItem).classList.add('active');
   num = num || 1;
 
   this.currentElement -= num;
-  if (this.currentElement < 0) this.currentElement = this.dotsVisible - 1;
+  if (this.currentElement < 0) this.currentElement = this.elemCount - 1;
+
+
   this.setRange(this.currentElement);
 
-  if (!this.options.loop) {  // сдвиг вправо без цикла
-    this.currentOffset += this.elemWidth * num;
-    this.crslList.style.marginLeft = this.currentOffset + 'px';
-    if (this.currentElement == 0) {
-      this.leftArrow.style.display = 'none'; this.touchPrev = false
-    }
-    this.rightArrow.style.display = 'block'; this.touchNext = true
-  }
-  else {                    // сдвиг вправо с циклом
-    let elm, buf, this$ = this;
-    for (let i = 0; i < num; i++) {
-      elm = this.crslList.lastElementChild;
-      buf = elm.cloneNode(true);
-      this.crslList.insertBefore(buf, this.crslList.firstElementChild);
-      this.crslList.removeChild(elm)
-    };
-    this.crslList.style.marginLeft = '-' + this.elemWidth * num + 'px';
-    let compStyle = window.getComputedStyle(this.crslList).marginLeft;
-    this.crslList.style.cssText = 'transition:margin ' + this.options.speed + 'ms ease;';
-    this.crslList.style.marginLeft = '0px';
-    setTimeout(function () {
-      this$.crslList.style.cssText = 'transition:none;'
-    }, this.options.speed)
-  }
+
+  let elm, buf, this$ = this;
+
+  for (let i = 0; i < num; i++) {
+    elm = this.crslList.lastElementChild;
+    buf = elm.cloneNode(true);
+    this.crslList.insertBefore(buf, this.crslList.firstElementChild);
+    this.crslList.removeChild(elm)
+  };
+
+  this.crslList.style.marginLeft = '-' + this.elemWidth * num + 'px';
+  let compStyle = window.getComputedStyle(this.crslList).marginLeft;
+  this.crslList.style.cssText = 'transition:margin ' + this.speed + 'ms ease;';
+  this.crslList.style.marginLeft = '0px';
+  setTimeout(function () {
+    this$.crslList.style.cssText = 'transition:none;'
+  }, this.speed)
 };
 
-Ant.prototype.elemNext = function (num) {
-  num = num || 1;
+MainSlider.prototype.elemNext = function () {
+  this.crslElements.item(this.activeItem).classList.remove('active');
+  this.activeItem++;
+  this.activeItem %= this.elemCount;
+  this.crslElements.item(this.activeItem).classList.add('active');
+
+
+  if (this.activeItem <= this.rightItem)
+    return;
+
+  this.rightItem++;
+  console.log(this.activeItem)
+  let num;
+  if (this.activeItem !== 7) {
+    num = 1;
+  } else {
+    this.elemPrev(7)
+    num = this.elemCount - 1;
+  }
 
   this.currentElement += num;
-  this.setRange(this.currentElement);
+  //this.setRange(this.currentElement);
 
-  if (!this.options.loop) {  // сдвиг влево без цикла
-    this.currentOffset -= this.elemWidth * num;
-    this.crslList.style.marginLeft = this.currentOffset + 'px';
-    if (this.currentElement == this.dotsVisible - 1) {
-      this.rightArrow.style.display = 'none'; this.touchNext = false
-    }
-    this.leftArrow.style.display = 'block'; this.touchPrev = true
-  }
-  else {                    // сдвиг влево с циклом
-    let elm, buf, this$ = this;
-    this.crslList.style.cssText = 'transition:margin ' + this.options.speed + 'ms ease;';
-    this.crslList.style.marginLeft = '-' + this.elemWidth * num + 'px';
-    setTimeout(function () {
-      this$.crslList.style.cssText = 'transition:none;';
-      for (let i = 0; i < num; i++) {
-        elm = this$.crslList.firstElementChild;
-        buf = elm.cloneNode(true); this$.crslList.appendChild(buf);
-        this$.crslList.removeChild(elm)
-      };
-      this$.crslList.style.marginLeft = '0px'
-    }, this.options.speed)
-  }
+
+  let elm, buf, this$ = this;
+  this.crslList.style.cssText = 'transition:margin ' + this.speed + 'ms ease;';
+  this.crslList.style.marginLeft = '-' + this.elemWidth * num + 'px';
+  setTimeout(function () {
+    this$.crslList.style.cssText = 'transition:none;';
+    for (let i = 0; i < num; i++) {
+      elm = this$.crslList.firstElementChild;
+      buf = elm.cloneNode(true); this$.crslList.appendChild(buf);
+      this$.crslList.removeChild(elm)
+    };
+    this$.crslList.style.marginLeft = '0px'
+  }, this.speed)
 };
 
-Ant.prototype.setRange = function (num) {
+MainSlider.prototype.setRange = function (num) {
   num %= this.elemCount;
   this.range.value = num;
   this.rangeValue.innerText = `0${num + 1}`;
 }
 
-Ant.initialize = function (that) {
-
-  // Constants
+MainSlider.initialize = function (that) {
+  that.activeItem = 0;
+  that.speed = 750;
   that.elemCount = that.crslElements.length; // Количество элементов
-  that.dotsVisible = that.elemCount;         // Число видимых точек
   let elemStyle = window.getComputedStyle(that.crslElemFirst);
   that.elemWidth = that.crslElemFirst.offsetWidth +  // Ширина элемента (без margin)
     parseInt(elemStyle.marginLeft) + parseInt(elemStyle.marginRight);
 
   // Variables
-  that.currentElement = 0; that.currentOffset = 0;
-  that.touchPrev = true; that.touchNext = true;
-  let xTouch, yTouch, xDiff, yDiff, stTime, mvTime;
+  that.currentElement = 0;
+  that.currentOffset = 0;
   let bgTime = getTime();
 
   // Functions
   function getTime() {
-    return new Date().getTime();
+    return Date.now();
   };
-  function setAutoScroll() {
-    that.autoScroll = setInterval(function () {
+
+  // инициализация стрелок
+  that.leftArrow.addEventListener('click', () => {
+    let fnTime = getTime();
+    if (fnTime - bgTime > that.speed) {
+      bgTime = fnTime; that.elemPrev()
+    }
+  }, false);
+  that.rightArrow.addEventListener('click', () => {
+    let fnTime = getTime();
+    if (fnTime - bgTime > that.speed) {
+      bgTime = fnTime; that.elemNext()
+    }
+  }, false)
+
+  //range
+  that.range.addEventListener('input', () => {
+    if (+that.range.value > that.currentElement % that.elemCount) {
       let fnTime = getTime();
-      if (fnTime - bgTime + 10 > that.options.interval) {
-        bgTime = fnTime; that.elemNext()
+      if (fnTime - bgTime > that.speed) {
+        bgTime = fnTime; that.elemNext(+that.range.value)
       }
-    }, that.options.interval)
-  };
-
-  // Start initialization
-  if (that.elemCount <= that.options.elemVisible) {   // Отключить навигацию
-    that.options.auto = false; that.options.touch = false;
-    that.options.arrows = false; that.options.dots = false;
-    that.leftArrow.style.display = 'none'; that.rightArrow.style.display = 'none'
-  };
-
-  if (!that.options.loop) {       // если нет цикла - уточнить количество точек
-    that.dotsVisible = that.elemCount - that.options.elemVisible + 1;
-    that.leftArrow.style.display = 'none';  // отключить левую стрелку
-    that.touchPrev = false;    // отключить прокрутку прикосновением вправо
-    that.options.auto = false; // отключить автопркрутку
-  }
-  else if (that.options.auto) {   // инициализация автопрокруки
-    setAutoScroll();
-    // Остановка прокрутки при наведении мыши на элемент
-    that.crslList.addEventListener('mouseenter', function () {
-      clearInterval(that.autoScroll)
-    }, false);
-    that.crslList.addEventListener('mouseleave', setAutoScroll, false)
-  };
-
-  if (that.options.touch) {   // инициализация прокрутки прикосновением
-    that.crslList.addEventListener('touchstart', function (e) {
-      xTouch = parseInt(e.touches[0].clientX);
-      yTouch = parseInt(e.touches[0].clientY);
-      stTime = getTime()
-    }, false);
-    that.crslList.addEventListener('touchmove', function (e) {
-      if (!xTouch || !yTouch) return;
-      xDiff = xTouch - parseInt(e.touches[0].clientX);
-      yDiff = yTouch - parseInt(e.touches[0].clientY);
-      mvTime = getTime();
-      if (Math.abs(xDiff) > 15 && Math.abs(xDiff) > Math.abs(yDiff) && mvTime - stTime < 75) {
-        stTime = 0;
-        if (that.touchNext && xDiff > 0) {
-          bgTime = mvTime; that.elemNext()
-        }
-        else if (that.touchPrev && xDiff < 0) {
-          bgTime = mvTime; that.elemPrev()
-        }
-      }
-    }, false)
-  };
-
-  if (that.options.arrows) {  // инициализация стрелок
-    if (!that.options.loop) that.crslList.style.cssText =
-      'transition:margin ' + that.options.speed + 'ms ease;';
-    that.leftArrow.addEventListener('click', function () {
+    } else {
       let fnTime = getTime();
-      if (fnTime - bgTime > that.options.speed) {
-        bgTime = fnTime; that.elemPrev()
+      if (fnTime - bgTime > that.speed) {
+        bgTime = fnTime; that.elemPrev(+that.range.value)
       }
-    }, false);
-    that.rightArrow.addEventListener('click', function () {
-      let fnTime = getTime();
-      if (fnTime - bgTime > that.options.speed) {
-        bgTime = fnTime; that.elemNext()
-      }
-    }, false)
-  }
-  else {
-    that.leftArrow.style.display = 'none';
-    that.rightArrow.style.display = 'none'
-  };
-
-  if (that.options.range) {
-    const { range } = that;
-
-    range.addEventListener('input', () => {
-      if (range.value > that.currentElement % that.elemCount) {
-        that.elemNext();
-      } else {
-        that.elemPrev();
-      }
-    });
-
-    range.addEventListener('mousedown', () => {
-      clearInterval(that.autoScroll)
-    });
-
-    document.addEventListener('mouseup', setAutoScroll, false);
-  }
+    }
+  });
 };
 
-new Ant();
-
-
+new MainSlider();
