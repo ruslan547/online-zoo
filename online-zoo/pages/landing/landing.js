@@ -262,23 +262,14 @@ function setBannerSliderFactionValue(value) {
 
 ///////////////////////////////////////////
 //Main-slider
-function Ant(crslId) {
-
-  let id = document.getElementById(crslId);
-  if (id) {
-    this.crslRoot = id
-  }
-  else {
-    this.crslRoot = document.querySelector('.main-slider')
-  };
-
-  // Carousel objects
-  this.crslList = this.crslRoot.querySelector('.main-slider__list');
-  this.crslElements = this.crslList.querySelectorAll('.main-slider__item');
-  this.crslElemFirst = this.crslList.querySelector('.main-slider__item');
-  this.leftArrow = this.crslRoot.querySelector('.main-slider__left-arrow');
-  this.rightArrow = this.crslRoot.querySelector('.main-slider__right-arrow');
-  //this.indicatorDots = this.crslRoot.querySelector('div.ant-carousel-dots');
+function Ant() {
+  this.crslList = document.querySelector('.main-slider__list');
+  this.crslElements = document.querySelectorAll('.main-slider__item');
+  this.crslElemFirst = document.querySelector('.main-slider__item');
+  this.leftArrow = document.querySelector('.main-slider__left-arrow');
+  this.rightArrow = document.querySelector('.main-slider__right-arrow');
+  this.range = document.querySelector('.main-slider__range');
+  this.rangeValue = document.querySelector('.main-slider__range-value');
 
   // Initialization
   this.options = Ant.defaults;
@@ -288,23 +279,22 @@ function Ant(crslId) {
 Ant.defaults = {
 
   // Default options for the carousel
-  elemVisible: 3, // Кол-во отображаемых элементов в карусели
+  elemVisible: 4, // Кол-во отображаемых элементов в карусели
   loop: true,     // Бесконечное зацикливание карусели
   auto: true,     // Автоматическая прокрутка
   interval: 5000, // Интервал между прокруткой элементов (мс)
   speed: 750,     // Скорость анимации (мс)
   touch: true,    // Прокрутка  прикосновением
   arrows: true,   // Прокрутка стрелками
-  dots: false      // Индикаторные точки
+  range: true,
 };
 
 Ant.prototype.elemPrev = function (num) {
   num = num || 1;
 
-  if (this.options.dots) this.dotOn(this.currentElement);
   this.currentElement -= num;
   if (this.currentElement < 0) this.currentElement = this.dotsVisible - 1;
-  if (this.options.dots) this.dotOff(this.currentElement);
+  this.setRange(this.currentElement);
 
   if (!this.options.loop) {  // сдвиг вправо без цикла
     this.currentOffset += this.elemWidth * num;
@@ -335,10 +325,8 @@ Ant.prototype.elemPrev = function (num) {
 Ant.prototype.elemNext = function (num) {
   num = num || 1;
 
-  if (this.options.dots) this.dotOn(this.currentElement);
   this.currentElement += num;
-  if (this.currentElement >= this.dotsVisible) this.currentElement = 0;
-  if (this.options.dots) this.dotOff(this.currentElement);
+  this.setRange(this.currentElement);
 
   if (!this.options.loop) {  // сдвиг влево без цикла
     this.currentOffset -= this.elemWidth * num;
@@ -364,13 +352,11 @@ Ant.prototype.elemNext = function (num) {
   }
 };
 
-Ant.prototype.dotOn = function (num) {
-  this.indicatorDotsAll[num].style.cssText = 'background-color:#BBB; cursor:pointer;'
-};
-
-Ant.prototype.dotOff = function (num) {
-  this.indicatorDotsAll[num].style.cssText = 'background-color:#556; cursor:default;'
-};
+Ant.prototype.setRange = function (num) {
+  num %= this.elemCount;
+  this.range.value = num;
+  this.rangeValue.innerText = `0${num + 1}`;
+}
 
 Ant.initialize = function (that) {
 
@@ -466,30 +452,22 @@ Ant.initialize = function (that) {
     that.rightArrow.style.display = 'none'
   };
 
-  if (that.options.dots) {  // инициализация индикаторных точек
-    let sum = '', diffNum;
-    for (let i = 0; i < that.dotsVisible; i++) {
-      sum += '<span class="ant-dot"></span>'
-    };
-    that.indicatorDots.innerHTML = sum;
-    that.indicatorDotsAll = that.crslRoot.querySelectorAll('span.ant-dot');
-    // Назначаем точкам обработчик события 'click'
-    for (let n = 0; n < that.dotsVisible; n++) {
-      that.indicatorDotsAll[n].addEventListener('click', function () {
-        diffNum = Math.abs(n - that.currentElement);
-        if (n < that.currentElement) {
-          bgTime = getTime(); that.elemPrev(diffNum)
-        }
-        else if (n > that.currentElement) {
-          bgTime = getTime(); that.elemNext(diffNum)
-        }
-        // Если n == that.currentElement ничего не делаем
-      }, false)
-    };
-    that.dotOff(0);  // точка[0] выключена, остальные включены
-    for (let i = 1; i < that.dotsVisible; i++) {
-      that.dotOn(i)
-    }
+  if (that.options.range) {
+    const { range } = that;
+
+    range.addEventListener('input', () => {
+      if (range.value > that.currentElement % that.elemCount) {
+        that.elemNext();
+      } else {
+        that.elemPrev();
+      }
+    });
+
+    range.addEventListener('mousedown', () => {
+      clearInterval(that.autoScroll)
+    });
+
+    document.addEventListener('mouseup', setAutoScroll, false);
   }
 };
 
