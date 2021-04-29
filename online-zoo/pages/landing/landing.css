@@ -1959,6 +1959,7 @@ line-height: 19px;
   width: 1200px;
   display: flex;
   justify-content: flex-start;
+  transition: .7s;
 }
 
 @media screen and (max-width: 1199px) {

@@ -9,12 +9,30 @@ const mainSliderItems = document.querySelectorAll('.main-slider__item');
 const firstMainSliderItem = document.querySelector('.main-slider__item');
 const leftMainSliderArrow = document.querySelector('.main-slider__left-arrow');
 const rightMainSliderArrow = document.querySelector('.main-slider__right-arrow');
+const range = document.querySelector('.main-slider__range');
+const rangeValueTag = document.querySelector('.main-slider__range-value');
+const mainSliderListLength = mainSliderItems.length;
+const mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
+const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
+const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
+const showdItemsNumber = 4;
+const speed = 500;
+
+let translate = 0;
+let curItemIndex = 0;
+let leftItem = 0;
+let rightItem = 3;
+let bgTime = getTime();
 
 //Theme
 themeToggle.addEventListener('click', handleThemeToggleClick);
 //Banner-slider
 bannerSliderList.addEventListener('click', handleListClick);
 bannerSliderRange.addEventListener('input', handleBannerSliderRangeInput);
+//Main-slider
+leftMainSliderArrow.addEventListener('click', handleMainSliderLeftArrowClick);
+rightMainSliderArrow.addEventListener('click', handleMainSliderRightArrowClick);
+range.addEventListener('input', handleMainSliderRangeInput);
 
 initTheme();
 
@@ -260,143 +278,95 @@ function setBannerSliderFactionValue(value) {
   target.innerText = `0${value + 1}`;
 }
 
-///////////////////////////////////////////
 //Main-slider
-function MainSlider() {
-  this.crslList = document.querySelector('.main-slider__list');
-  this.crslElements = document.querySelectorAll('.main-slider__item');
-  this.crslElemFirst = document.querySelector('.main-slider__item');
-  this.leftArrow = document.querySelector('.main-slider__left-arrow');
-  this.rightArrow = document.querySelector('.main-slider__right-arrow');
-  this.range = document.querySelector('.main-slider__range');
-  this.rangeValue = document.querySelector('.main-slider__range-value');
-
-  this.rightItem = 3;
-
-  MainSlider.initialize(this)
-};
-
-MainSlider.prototype.elemPrev = function (num) {
-  // this.crslElements.item(this.activeItem).classList.remove('active');
-  // this.activeItem--;
-  // this.crslElements.item(this.activeItem).classList.add('active');
-  num = num || 1;
-
-  this.currentElement -= num;
-  if (this.currentElement < 0) this.currentElement = this.elemCount - 1;
-
-
-  this.setRange(this.currentElement);
-
-
-  let elm, buf, this$ = this;
-
-  for (let i = 0; i < num; i++) {
-    elm = this.crslList.lastElementChild;
-    buf = elm.cloneNode(true);
-    this.crslList.insertBefore(buf, this.crslList.firstElementChild);
-    this.crslList.removeChild(elm)
-  };
-
-  this.crslList.style.marginLeft = '-' + this.elemWidth * num + 'px';
-  let compStyle = window.getComputedStyle(this.crslList).marginLeft;
-  this.crslList.style.cssText = 'transition:margin ' + this.speed + 'ms ease;';
-  this.crslList.style.marginLeft = '0px';
-  setTimeout(function () {
-    this$.crslList.style.cssText = 'transition:none;'
-  }, this.speed)
-};
-
-MainSlider.prototype.elemNext = function () {
-  this.crslElements.item(this.activeItem).classList.remove('active');
-  this.activeItem++;
-  this.activeItem %= this.elemCount;
-  this.crslElements.item(this.activeItem).classList.add('active');
-
-
-  if (this.activeItem <= this.rightItem)
-    return;
-
-  this.rightItem++;
-  console.log(this.activeItem)
-  let num;
-  if (this.activeItem !== 7) {
-    num = 1;
-  } else {
-    this.elemPrev(7)
-    num = this.elemCount - 1;
+function handleMainSliderLeftArrowClick() {
+  let fnTime = getTime();
+  if (fnTime - bgTime > speed) {
+    bgTime = fnTime;
+    prevItemOfMainSlider();
   }
-
-  this.currentElement += num;
-  //this.setRange(this.currentElement);
-
-
-  let elm, buf, this$ = this;
-  this.crslList.style.cssText = 'transition:margin ' + this.speed + 'ms ease;';
-  this.crslList.style.marginLeft = '-' + this.elemWidth * num + 'px';
-  setTimeout(function () {
-    this$.crslList.style.cssText = 'transition:none;';
-    for (let i = 0; i < num; i++) {
-      elm = this$.crslList.firstElementChild;
-      buf = elm.cloneNode(true); this$.crslList.appendChild(buf);
-      this$.crslList.removeChild(elm)
-    };
-    this$.crslList.style.marginLeft = '0px'
-  }, this.speed)
-};
-
-MainSlider.prototype.setRange = function (num) {
-  num %= this.elemCount;
-  this.range.value = num;
-  this.rangeValue.innerText = `0${num + 1}`;
 }
 
-MainSlider.initialize = function (that) {
-  that.activeItem = 0;
-  that.speed = 750;
-  that.elemCount = that.crslElements.length; // Количество элементов
-  let elemStyle = window.getComputedStyle(that.crslElemFirst);
-  that.elemWidth = that.crslElemFirst.offsetWidth +  // Ширина элемента (без margin)
-    parseInt(elemStyle.marginLeft) + parseInt(elemStyle.marginRight);
+function handleMainSliderRightArrowClick() {
+  let fnTime = getTime();
+  if (fnTime - bgTime > speed) {
+    bgTime = fnTime;
+    nextItemOfMainSlider();
+  }
+}
 
-  // Variables
-  that.currentElement = 0;
-  that.currentOffset = 0;
-  let bgTime = getTime();
+function handleMainSliderRangeInput() {
+  if (range.value > curItemIndex) {
+    nextItemOfMainSlider();
+  } else {
+    prevItemOfMainSlider();
+  }
+}
 
-  // Functions
-  function getTime() {
-    return Date.now();
-  };
+function prevItemOfMainSlider() {
+  changeActiveItem(decrementCurItem());
+  setRange(curItemIndex);
 
-  // инициализация стрелок
-  that.leftArrow.addEventListener('click', () => {
-    let fnTime = getTime();
-    if (fnTime - bgTime > that.speed) {
-      bgTime = fnTime; that.elemPrev()
-    }
-  }, false);
-  that.rightArrow.addEventListener('click', () => {
-    let fnTime = getTime();
-    if (fnTime - bgTime > that.speed) {
-      bgTime = fnTime; that.elemNext()
-    }
-  }, false)
+  if (curItemIndex >= leftItem && curItemIndex < rightItem) {
+    return;
+  }
 
-  //range
-  that.range.addEventListener('input', () => {
-    if (+that.range.value > that.currentElement % that.elemCount) {
-      let fnTime = getTime();
-      if (fnTime - bgTime > that.speed) {
-        bgTime = fnTime; that.elemNext(+that.range.value)
-      }
-    } else {
-      let fnTime = getTime();
-      if (fnTime - bgTime > that.speed) {
-        bgTime = fnTime; that.elemPrev(+that.range.value)
-      }
-    }
-  });
-};
+  leftItem--;
+  rightItem--;
 
-new MainSlider();
+  if (translate > 0) {
+    translate -= itemWidth;
+  } else {
+    translate = mainSliderListWidth + itemMargin - 2;
+    rightItem = mainSliderListLength - 1;
+    leftItem = showdItemsNumber;
+  }
+  mainSliderList.style.transform = `translateX(-${translate}px)`;
+}
+
+function nextItemOfMainSlider() {
+  changeActiveItem(incrementCurItem());
+  setRange(curItemIndex);
+
+  if (curItemIndex && curItemIndex <= rightItem) {
+    return;
+  }
+
+  rightItem++;
+  leftItem++;
+
+  if (translate < mainSliderListWidth) {
+    translate += itemWidth;
+  } else {
+    translate = 0;
+    rightItem = showdItemsNumber - 1;
+    leftItem = 0;
+  }
+
+  mainSliderList.style.transform = `translateX(-${translate}px)`;
+}
+
+function changeActiveItem(curItemIndex) {
+  const mainSliderItems = document.querySelectorAll('.main-slider__item');
+  [...mainSliderItems].forEach(item => item.classList.remove('active'));
+  mainSliderItems.item(curItemIndex).classList.add('active');
+}
+
+function incrementCurItem() {
+  curItemIndex++;
+  return curItemIndex %= mainSliderListLength;
+}
+
+function decrementCurItem() {
+  curItemIndex = curItemIndex ? curItemIndex - 1 : mainSliderListLength - 1;
+  return curItemIndex;
+}
+
+function setRange(num) {
+  range.value = num;
+  rangeValueTag.innerText = `0${num + 1}`;
+}
+
+function getTime() {
+  return Date.now();
+}
