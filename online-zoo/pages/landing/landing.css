@@ -1450,24 +1450,6 @@ line-height: 19px;
 
 }
 
-/* @media screen and (max-width: 1199px) {
-
-  .banner-slider__item_active {
-    width: 247px;
-    top: 0;
-  }
-
-}
-
-@media screen and (max-width: 639px) {
-
-  .banner-slider__item_active {
-    width: 140px;
-    top: 0;
-  }
-
-} */
-
 .banner-slider__item_act .banner-slider__slider-item-content {
   animation: bannerMove  1s ;
   animation-fill-mode: forwards;
@@ -1989,7 +1971,7 @@ line-height: 19px;
 @media screen and (max-width: 639px) {
 
   .main-slider__list {
-    width: 889px;
+    max-width: 889px;
   }
 
 }
