@@ -12,9 +12,6 @@ const rightMainSliderArrow = document.querySelector('.main-slider__right-arrow')
 const range = document.querySelector('.main-slider__range');
 const rangeValueTag = document.querySelector('.main-slider__range-value');
 const mainSliderListLength = mainSliderItems.length;
-const mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
-const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
-const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
 const showdItemsNumber = 4;
 const speed = 500;
 
@@ -304,6 +301,10 @@ function handleMainSliderRangeInput() {
 }
 
 function prevItemOfMainSlider() {
+  const mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
+  const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
+  const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
+
   changeActiveItem(decrementCurItem());
   setRange(curItemIndex);
 
@@ -314,17 +315,22 @@ function prevItemOfMainSlider() {
   leftItem--;
   rightItem--;
 
-  if (translate > 0) {
+  if (translate > 2) {
     translate -= itemWidth;
   } else {
-    translate = mainSliderListWidth + itemMargin - 2;
+    translate = mainSliderListWidth + itemMargin;
     rightItem = mainSliderListLength - 1;
     leftItem = showdItemsNumber;
   }
+
   mainSliderList.style.transform = `translateX(-${translate}px)`;
 }
 
 function nextItemOfMainSlider() {
+  const mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
+  const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
+  const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
+
   changeActiveItem(incrementCurItem());
   setRange(curItemIndex);
 
