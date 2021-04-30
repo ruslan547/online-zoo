@@ -549,7 +549,7 @@ input[type=range]::-moz-range-thumb {
   background-image: url(../../assets/images/active-makr.svg);
 }
 
-.mark_selected {
+.mark_active {
   background-image: url(../../assets/images/active-makr.svg);
 }
 
@@ -585,14 +585,14 @@ input[type=range]::-moz-range-thumb {
 
 }
 
-.mark_crocadile {
+.mark_crocodile {
   top: 103px;
   left: 244px;
 }
 
 @media screen and (max-width: 1919px) {
 
-  .mark_crocadile {
+  .mark_crocodile {
     top: 59px;
     left: 156px;
   }
@@ -601,7 +601,7 @@ input[type=range]::-moz-range-thumb {
 
 @media screen and (max-width: 1199px) {
 
-  .mark_crocadile {
+  .mark_crocodile {
     top: 16px;
     left: 102px;
   }
@@ -610,7 +610,7 @@ input[type=range]::-moz-range-thumb {
 
 @media screen and (max-width: 639px) {
 
-  .mark_crocadile {
+  .mark_crocodile {
     top: 8px;
     left: 51px;
   }
@@ -649,14 +649,14 @@ input[type=range]::-moz-range-thumb {
 
 }
 
-.mark_ponda {
+.mark_panda {
   top: 100px;
   right: 230px;
 }
 
 @media screen and (max-width: 1919px) {
 
-  .mark_ponda {
+  .mark_panda {
     top: 59px;
     right: 157px;
   }
@@ -665,7 +665,7 @@ input[type=range]::-moz-range-thumb {
 
 @media screen and (max-width: 1199px) {
 
-  .mark_ponda {
+  .mark_panda {
     top: 12px;
     right: 105px;
   }
@@ -674,7 +674,7 @@ input[type=range]::-moz-range-thumb {
 
 @media screen and (max-width: 639px) {
 
-  .mark_ponda {
+  .mark_panda {
     top: 7px;
     right: 50px;
   }

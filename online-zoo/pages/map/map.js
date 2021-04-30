@@ -11,6 +11,7 @@ const rightSliderArrow = document.querySelector('.slider-arrow_right');
 const range = document.querySelector('.range');
 const rangeValueTag = document.querySelector('.range-value');
 const sliderListLength = sliderItems.length;
+const markArr = Array.from(document.querySelectorAll('.mark'));
 
 let showdItemsNumber = 8;
 let curItemIndex = 1;
@@ -21,11 +22,12 @@ let bgTime = getTime();
 //Theme
 themeToggle.addEventListener('click', handleThemeToggleClick);
 
-//Main-slider
+//slider
 leftSliderArrow.addEventListener('click', handleMainSliderLeftArrowClick);
 rightSliderArrow.addEventListener('click', handleMainSliderRightArrowClick);
 range.addEventListener('input', handleMainSliderRangeInput);
 window.addEventListener('resize', initSlider);
+sliderList.addEventListener('click', handleSliderListClick);
 
 initTheme();
 initSlider();
@@ -194,5 +196,26 @@ function initSlider() {
 
   rightItem = showdItemsNumber - 1;
   changeActiveItem(curItemIndex);
+  //TO DO deltet argument of fun
+  changeActiveMark(document.querySelector('.mark_panda'));
   setRange(curItemIndex);
+}
+
+//
+
+
+function handleSliderListClick({ target }) {
+  const animals = ['monkey', 'panda', 'crocodile', 'eagle'];
+  const classList = Array.from(target.parentNode.classList);
+  const animal = classList.find(item => animals.includes(item));
+  const mark = markArr.find(item => item.classList.contains(`mark_${animal}`));
+
+  changeActiveMark(mark);
+}
+
+function changeActiveMark(mark) {
+  markArr.forEach(item => item.classList.remove('mark_active'));
+  if (mark) {
+    mark.classList.add('mark_active');
+  }
 }
