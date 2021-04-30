@@ -1,36 +1,34 @@
+const SPEED = 500
+
 //Theme
 const themeToggle = document.querySelector('.theme-toggle');
 //slider
 const sliderList = document.querySelector('.slider__list');
 const sliderItems = document.querySelectorAll('.slider__item');
 const firstMainSliderItem = document.querySelector('.slider__item');
-const leftMainSliderArrow = document.querySelector('.slider-arrow_left');
-const rightMainSliderArrow = document.querySelector('.slider-arrow_right');
+const leftSliderArrow = document.querySelector('.slider-arrow_left');
+const rightSliderArrow = document.querySelector('.slider-arrow_right');
 const range = document.querySelector('.range');
 const rangeValueTag = document.querySelector('.range-value');
-const mainSliderListLength = sliderItems.length;
+const sliderListLength = sliderItems.length;
+
 let showdItemsNumber = 8;
-const speed = 500;
-
-const mainSliderListWidth = +getComputedStyle(sliderList).width.replace('px', '');
-const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
-const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
-
-let translate = itemWidth;
 let curItemIndex = 1;
 let leftItem = 0;
-let rightItem = showdItemsNumber - 1;
+let rightItem;
 let bgTime = getTime();
 
 //Theme
 themeToggle.addEventListener('click', handleThemeToggleClick);
 
 //Main-slider
-leftMainSliderArrow.addEventListener('click', handleMainSliderLeftArrowClick);
-rightMainSliderArrow.addEventListener('click', handleMainSliderRightArrowClick);
+leftSliderArrow.addEventListener('click', handleMainSliderLeftArrowClick);
+rightSliderArrow.addEventListener('click', handleMainSliderRightArrowClick);
 range.addEventListener('input', handleMainSliderRangeInput);
+window.addEventListener('resize', initSlider);
 
 initTheme();
+initSlider();
 
 //Theme
 function handleThemeToggleClick({ target }) {
@@ -54,22 +52,10 @@ function initTheme() {
 
 /////////////////////////////////
 
-if (window.innerWidth < 1920) {
-  showdItemsNumber = 5;
-}
-
-if (window.innerWidth < 1920) {
-  sliderItems.forEach((item, index) => {
-    if (index > showdItemsNumber - 1) {
-      item.style.display = 'none';
-    }
-  })
-}
-
 //slider
 function handleMainSliderLeftArrowClick() {
   let fnTime = getTime();
-  if (fnTime - bgTime > speed) {
+  if (fnTime - bgTime > SPEED) {
     bgTime = fnTime;
     prevItemOfMainSlider();
   }
@@ -77,7 +63,7 @@ function handleMainSliderLeftArrowClick() {
 
 function handleMainSliderRightArrowClick() {
   let fnTime = getTime();
-  if (fnTime - bgTime > speed) {
+  if (fnTime - bgTime > SPEED) {
     bgTime = fnTime;
     nextItemOfMainSlider();
   }
@@ -92,53 +78,41 @@ function handleMainSliderRangeInput() {
 }
 
 function prevItemOfMainSlider() {
-  const mainSliderListWidth = +getComputedStyle(sliderListt).width.replace('px', '');
-  const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
-  const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
-
   changeActiveItem(decrementCurItem());
   setRange(curItemIndex);
 
+  if (curItemIndex === sliderListLength - 1) {
+    rebaseToEnd();
+  }
 
-
-  leftItem--;
-  rightItem--;
-
-
-}
-
-function nextItemOfMainSlider() {
-  const mainSliderListWidth = +getComputedStyle(sliderList).width.replace('px', '');
-  const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
-  const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
-
-  changeActiveItem(incrementCurItem());
-  setRange(curItemIndex);
-
-  if (curItemIndex <= showdItemsNumber - 1) {
+  if (curItemIndex >= leftItem) {
     return;
   }
 
-  sliderList.style.transition = '.75s';
-  sliderList.style.transform = `translateX(-${itemWidth}px)`;
   sliderItems.item(curItemIndex).style.display = 'flex';
-  sliderItems.item(curItemIndex).style.transition = '.75s';
-  sliderItems.item(curItemIndex).style.opacity = 0;
-  sliderItems.item(curItemIndex).style.opacity = 1;
-  sliderItems.item(leftItem).style.opacity = 0;
+  sliderItems.item(rightItem).style.display = 'none';
 
-  setTimeout(() => {
-    sliderItems.item(leftItem).style.display = 'none';
-    sliderList.style.transform = `translateX(-${0}px)`;
-    rightItem++;
-    leftItem++;
-  }, speed);
+  leftItem--;
+  rightItem--;
+}
 
+function nextItemOfMainSlider() {
+  changeActiveItem(incrementCurItem());
+  setRange(curItemIndex);
 
+  if (curItemIndex === 0) {
+    rebaseToStart();
+  }
 
+  if (curItemIndex <= rightItem) {
+    return;
+  }
 
+  sliderItems.item(curItemIndex).style.display = 'flex';
+  sliderItems.item(leftItem).style.display = 'none';
 
-
+  leftItem++;
+  rightItem++;
 }
 
 function changeActiveItem(curItemIndex) {
@@ -149,11 +123,11 @@ function changeActiveItem(curItemIndex) {
 
 function incrementCurItem() {
   curItemIndex++;
-  return curItemIndex %= mainSliderListLength;
+  return curItemIndex %= sliderListLength;
 }
 
 function decrementCurItem() {
-  curItemIndex = curItemIndex ? curItemIndex - 1 : mainSliderListLength - 1;
+  curItemIndex = curItemIndex ? curItemIndex - 1 : sliderListLength - 1;
   return curItemIndex;
 }
 
@@ -164,4 +138,61 @@ function setRange(num) {
 
 function getTime() {
   return Date.now();
+}
+
+function rebaseToStart() {
+  leftItem = 0;
+  if (window.innerWidth < 1920) {
+    rightItem = showdItemsNumber - 1;
+    sliderItems.forEach((item, index) => {
+      if (index > showdItemsNumber - 1) {
+        item.style.display = 'none';
+      } else {
+        item.style.display = 'flex';
+      }
+    });
+  }
+}
+
+function rebaseToEnd() {
+  rightItem = sliderListLength - 1;
+  if (window.innerWidth < 1920) {
+    leftItem = sliderListLength - showdItemsNumber;
+    sliderItems.forEach((item, index) => {
+      if (index < sliderListLength - showdItemsNumber) {
+        item.style.display = 'none';
+      } else {
+        item.style.display = 'flex';
+      }
+    });
+  }
+}
+
+function initSlider() {
+  curItemIndex = 1;
+  leftItem = 0;
+
+  if (window.innerWidth >= 1920) {
+    showdItemsNumber = 8;
+  }
+
+  if (window.innerWidth < 1920 && window.innerWidth >= 1200) {
+    showdItemsNumber = 5;
+  }
+
+  if (window.innerWidth < 1200 && window.innerWidth >= 640) {
+    showdItemsNumber = 4;
+  }
+
+  sliderItems.forEach((item, index) => {
+    if (index > showdItemsNumber - 1) {
+      item.style.display = 'none';
+    } else {
+      item.style.display = 'flex';
+    }
+  });
+
+  rightItem = showdItemsNumber - 1;
+  changeActiveItem(curItemIndex);
+  setRange(curItemIndex);
 }
