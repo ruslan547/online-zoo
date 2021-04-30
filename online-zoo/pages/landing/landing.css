@@ -195,7 +195,7 @@ ul {
   transition: .5s;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 640px) {
 
   .slider-arrow {
     display: none;
@@ -1879,14 +1879,6 @@ line-height: 19px;
 @media screen and (max-width: 1199px) {
 
   .pets-in-zoo__container {
-    width: auto;
-  }
-
-}
-
-@media screen and (max-width: 980px) {
-
-  .pets-in-zoo__container {
     width: 600px;
   }
 
@@ -1935,7 +1927,6 @@ line-height: 19px;
 @media screen and (max-width: 1199px) {
 
   .main-slider {
-    overflow: hidden;
     margin-bottom: 31px;
   }
 
@@ -1964,6 +1955,14 @@ line-height: 19px;
 
   .main-slider__list {
     width: 900px;
+  }
+
+}
+
+@media screen and (max-width: 1190px) {
+
+  .main-slider__list {
+    width: 600px;
   }
 
 }
