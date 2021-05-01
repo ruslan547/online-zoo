@@ -546,7 +546,6 @@ input[type=range]::-moz-range-thumb {
 
 .mark:hover {
   cursor: pointer;
-  background-image: url(../../assets/images/active-makr.svg);
 }
 
 .mark_active {
