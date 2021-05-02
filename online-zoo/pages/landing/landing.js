@@ -12,13 +12,13 @@ const rightMainSliderArrow = document.querySelector('.main-slider__right-arrow')
 const range = document.querySelector('.main-slider__range');
 const rangeValueTag = document.querySelector('.main-slider__range-value');
 const mainSliderListLength = mainSliderItems.length;
-const showdItemsNumber = 4;
 const speed = 500;
 
+let showdItemsNumber;
 let translate = 0;
 let curItemIndex = 0;
 let leftItem = 0;
-let rightItem = 3;
+let rightItem;
 let bgTime = getTime();
 
 //Theme
@@ -30,8 +30,10 @@ bannerSliderRange.addEventListener('input', handleBannerSliderRangeInput);
 leftMainSliderArrow.addEventListener('click', handleMainSliderLeftArrowClick);
 rightMainSliderArrow.addEventListener('click', handleMainSliderRightArrowClick);
 range.addEventListener('input', handleMainSliderRangeInput);
+window.addEventListener('resize', handleResize);
 
 initTheme();
+initMainSlider();
 
 //Theme
 function handleThemeToggleClick({ target }) {
@@ -236,6 +238,27 @@ function setBannerSliderFactionValue(value) {
 }
 
 //Main-slider
+function initMainSlider() {
+  if (window.innerWidth >= 1200) {
+    showdItemsNumber = 4;
+    rightItem = 3;
+  }
+
+  if (window.innerWidth < 1200) {
+    showdItemsNumber = 3;
+    rightItem = 2;
+  }
+}
+
+
+function handleResize() {
+  initMainSlider();
+  leftItem = 0;
+  translate = 0;
+  mainSliderList.style.transform = `translateX(0)`;
+  changeActiveItem(curItemIndex = 0);
+}
+
 function handleMainSliderLeftArrowClick() {
   let fnTime = getTime();
   if (fnTime - bgTime > speed) {
@@ -261,9 +284,13 @@ function handleMainSliderRangeInput() {
 }
 
 function prevItemOfMainSlider() {
-  const mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
+  let mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
   const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
   const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
+
+  if (window.innerWidth < 1200) {
+    mainSliderListWidth += 230;
+  }
 
   changeActiveItem(decrementCurItem());
   setRange(curItemIndex);
@@ -280,16 +307,20 @@ function prevItemOfMainSlider() {
   } else {
     translate = mainSliderListWidth + itemMargin;
     rightItem = mainSliderListLength - 1;
-    leftItem = showdItemsNumber;
+    leftItem = mainSliderListLength - showdItemsNumber;
   }
 
   mainSliderList.style.transform = `translateX(-${translate}px)`;
 }
 
 function nextItemOfMainSlider() {
-  const mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
+  let mainSliderListWidth = +getComputedStyle(mainSliderList).width.replace('px', '');
   const itemMargin = +getComputedStyle(firstMainSliderItem).marginRight.replace('px', '');
   const itemWidth = firstMainSliderItem.offsetWidth + itemMargin;
+
+  if (window.innerWidth < 1200) {
+    mainSliderListWidth += 230;
+  }
 
   changeActiveItem(incrementCurItem());
   setRange(curItemIndex);
@@ -336,3 +367,4 @@ function setRange(num) {
 function getTime() {
   return Date.now();
 }
+

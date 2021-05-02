@@ -1914,7 +1914,8 @@ line-height: 19px;
 @media screen and (max-width: 1199px) {
 
   .pets-in-zoo__container {
-    width: 600px;
+    /* width: 600px; */
+    width: 670px;
   }
 
 }
@@ -1997,7 +1998,7 @@ line-height: 19px;
 @media screen and (max-width: 1190px) {
 
   .main-slider__list {
-    width: 600px;
+    width: 900px;
   }
 
 }
