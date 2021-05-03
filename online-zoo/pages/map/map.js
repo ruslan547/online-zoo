@@ -151,11 +151,12 @@ function rebaseToStart() {
   leftItem = 0;
   if (window.innerWidth < 1920) {
     rightItem = showdItemsNumber - 1;
-    sliderItems.forEach((item, index) => {
+    Array.from(sliderItems).reverse().forEach((item, index, arr) => {
       if (index > showdItemsNumber - 1) {
-        item.style.display = 'none';
-      } else {
-        item.style.display = 'flex';
+        setTimeout(() => {
+          item.style.display = 'flex';
+          arr[index - showdItemsNumber].style.display = 'none';
+        }, index * 100);
       }
     });
   }
@@ -165,11 +166,12 @@ function rebaseToEnd() {
   rightItem = sliderListLength - 1;
   if (window.innerWidth < 1920) {
     leftItem = sliderListLength - showdItemsNumber;
-    sliderItems.forEach((item, index) => {
-      if (index < sliderListLength - showdItemsNumber) {
-        item.style.display = 'none';
-      } else {
-        item.style.display = 'flex';
+    Array.from(sliderItems).forEach((item, index, arr) => {
+      if (index > showdItemsNumber - 1) {
+        setTimeout(() => {
+          item.style.display = 'flex';
+          arr[index - showdItemsNumber].style.display = 'none';
+        }, index * 100);
       }
     });
   }
