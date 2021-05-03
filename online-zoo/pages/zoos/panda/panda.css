@@ -921,6 +921,22 @@ line-height: 19px;
   color: var(--fg-text);
 }
 
+@media screen and (max-width: 1919px) {
+
+  .zoo__screen {
+    height: 418px;
+  }
+
+}
+
+@media screen and (max-width: 1199px) {
+
+  .zoo__screen {
+    height: 385px;
+  }
+
+}
+
 .zoo__screen_active {
   display: flex;
 }

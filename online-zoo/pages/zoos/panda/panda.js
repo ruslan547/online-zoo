@@ -43,13 +43,11 @@ function handleIframesClick({ target }) {
   itemCopy.height = getComputedStyle(iframe).height;
   itemCopy.src = `${itemCopy.src}?autoplay=1`;
   itemCopy.classList.add('zoo__iframe');
-  itemCopy.id = iframe.id;
 
   iframe.width = getComputedStyle(iframesItem.lastElementChild).width;
   iframe.height = getComputedStyle(iframesItem.lastElementChild).height;
   iframe.src = iframe.src.replace('?autoplay=1', '');
   iframe.classList.remove('zoo__iframe');
-  iframe.id = iframesItem.lastElementChild.id;
 
   iframesItem.replaceChild(iframe, iframesItem.lastElementChild);
   iframes.before(itemCopy);
