@@ -224,41 +224,10 @@ ul {
 
 .slider__item:hover {
   cursor: pointer;
-  transform: scale(1.1);
 }
 
 .slider__item_active:hover {
-  position: relative;
-  width: 108px;
-  height: 108px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background: var(--selected-gradient);
-  transform: scale(1.4);
-}
-
-@media screen and (max-width: 1199px) {
-
-  .slider__item_active:hover {
-    position: relative;
-    min-width: 157px;
-    height: 157px;
-    transform: none;
-  }
-
-}
-
-@media screen and (max-width: 639px) {
-
-  .slider__item_active:hover {
-    position: relative;
-    min-width: 85px;
-    height: 85px;
-    transform: none;
-  }
-
+  cursor: alias;
 }
 
 /*Slider arrow*/
