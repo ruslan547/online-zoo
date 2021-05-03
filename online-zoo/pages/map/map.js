@@ -177,6 +177,24 @@ function rebaseToEnd() {
   }
 }
 
+function rebaseToCurrent() {
+  if (window.innerWidth < 1920) {
+    const indexOfActiveItem = sliderListLength - curItemIndex;
+    leftItem = curItemIndex;
+    rightItem = leftItem + showdItemsNumber - 1;
+    Array.from(sliderItems).reverse().forEach((item, index, arr) => {
+      if (index < indexOfActiveItem) {
+        if (index > showdItemsNumber - 1) {
+          setTimeout(() => {
+            item.style.display = 'flex';
+            arr[index - showdItemsNumber].style.display = 'none';
+          }, index * 100);
+        }
+      }
+    });
+  }
+}
+
 function initSlider() {
   curItemIndex = 1;
   leftItem = 0;
@@ -249,7 +267,8 @@ function handleMapScreenClick({ target }) {
   setRange(curItemIndex);
 
   if (leftItem > curItemIndex) {
-    rebaseToStart();
+    // rebaseToStart();
+    rebaseToCurrent();
   }
 }
 
