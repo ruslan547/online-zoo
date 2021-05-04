@@ -870,6 +870,10 @@ line-height: 19px;
 
 }
 
+.zoo__screen_active {
+  display: flex;
+}
+
 .zoo__iframe {
   margin-bottom: 30px;
   border-radius: 4px;
@@ -1061,8 +1065,8 @@ line-height: 19px;
 .iframes {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 27px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 639px) {
@@ -1106,6 +1110,38 @@ line-height: 19px;
     display: none;
   }
 
+}
+
+.iframes__item {
+  position: relative;
+  margin-right: 27px;
+}
+
+.iframes__item:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 1919px) {
+
+  .iframes__item {
+    margin-right: 20px;
+  }
+
+}
+
+@media screen and (max-width: 1199px) {
+
+  .iframes__item {
+    margin-right: 17px;
+  }
+
+}
+
+.iframes__screen {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .zoo__points {
