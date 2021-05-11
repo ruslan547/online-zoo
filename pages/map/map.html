@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../normalize.css">
+  <link rel="stylesheet" href="./map.css">
+  <title>ZOO online</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__container container">
+      <h1 class="logo">
+        <a class="logo__link" href="../landing/landing.html">
+          <span class="logo__zoo">zoo</span>
+          <span class="logo__online">online</span>
+        </a>
+      </h1>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-list__item">
+            <a class="nav-list__link" href="../landing/landing.html">about</a>
+          </li>
+          <li class="nav-list__item">
+            <a class="nav-list__link" href="../zoos/panda/panda.html">zoos</a>
+          </li>
+          <li class="nav-list__item">
+            <a class="nav-list__link nav-list__link_active" href="#">map</a>
+          </li>
+          <li class="nav-list__item">
+            <a class="nav-list__link" href="#contact">contact us</a>
+          </li>
+          <li class="nav-list__item">
+            <a class="nav-list__link" href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp">design</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="btns">
+        <label class="theme-toggle" for="toggle">
+          <input class="theme-toggle__checkbox" id="toggle" type="checkbox">
+          <div class="theme-toggle__btn"></div>
+        </label>
+        <div class="nav-btn">
+          <div class="nav-btn__line"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section class="map">
+      <div class="small-container small-container_column">
+        <article class="description">
+          <h3 class="title description__title">Choose your favorite</h3>
+          <p class="text description__text">As a voice for wildlife, we are devastated by the impact of
+            the 2020 Australian bushfires on precious species and their habitat, and
+            we are determined to assist in all aspects, including providing veterinary
+            support and raising much-needed emergency funds. Zoo Online saves wildlife
+            and inspires everyone to make conservation a priority in their lives.
+            Animals have the right to a pain-free and happy life. They have equal claim
+            to the resources of this planet, and deserve a life of dignity and compassion.As
+            a voice for wildlife, we are devastated by the impact of the 2020 Australian
+            bushfires on precious species and their habitat.
+          </p>
+        </article>
+        <div class="map__slider slider">
+          <div class="slider-arrow slider-arrow_left"></div>
+          <ul class="slider__list">
+            <li class="slider__item monkey">
+              <img class="animal-icon" src="../../assets/images/monkey-icon.png" alt="">
+            </li>
+            <li class="slider__item slider__item_active panda">
+              <img class="animal-icon" src="../../assets/images/panda-icon.png" alt="">
+            </li>
+            <li class="slider__item crocodile">
+              <img class="animal-icon" src="../../assets/images/crocodile-icon.png" alt="">
+            </li>
+            <li class="slider__item eagle">
+              <img class="animal-icon" src="../../assets/images/eagle-icon.png" alt="">
+            </li>
+            <li class="slider__item">
+              <img class="animal-icon" src="../../assets/images/tiger-icon.png" alt="">
+            </li>
+            <li class="slider__item">
+              <img class="animal-icon" src="../../assets/images/elephant-icon.png" alt="">
+            </li>
+            <li class="slider__item">
+              <img class="animal-icon" src="../../assets/images/lion-icon.png" alt="">
+            </li>
+            <li class="slider__item">
+              <img class="animal-icon" src="../../assets/images/zebra-icon.png" alt="">
+            </li>
+          </ul>
+          <div class="slider-arrow slider-arrow_right"></div>
+        </div>
+        <div class="map__progress progress">
+          <div class="fraction">
+            <span class="range-value">02</span>/<span class="fraction__scope">08</span>
+          </div>
+          <input class="range" type="range" value="1" min="0" max="7">
+        </div>
+        <div class="map__map-screen map-screen">
+          <div class="mark mark_eagle" title="eagle" data-animal="eagle">
+            <img src="../../assets/images/eagle-circle.png" alt="" class="mark__img">
+          </div>
+          <div class="mark mark_crocodile" title="crocodile" data-animal="crocodile">
+            <img src="../../assets/images/crocodile-circle.png" alt="" class="mark__img">
+          </div>
+          <div class="mark mark_monkey" title="monkey" data-animal="monkey">
+            <img src="../../assets/images/monkey-circle.png" alt="" class="mark__img">
+          </div>
+          <div class="mark mark_selected mark_panda" title="panda" data-animal="panda">
+            <img src="../../assets/images/panda-circle.png" alt="" class="mark__img">
+          </div>
+        </div>
+        <a href="../zoos/panda/panda.html" class="watch-btn">
+          <div class="watch-btn__circle">
+            <div class="watch-btn__arrow"></div>
+          </div>
+          watch online
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="left-content">
+          <ul class="logos logos_mb">
+            <li class="logos__item">
+              <div class="logo logo_footer">
+                <a class="logo__link" href="../landing/landing.html">
+                  <span class="logo__zoo">zoo</span>
+                  <span class="logo__online">online</span>
+                </a>
+              </div>
+            </li>
+            <li class="logos__item">
+              <img src="../../assets/images/yem-digital.svg" alt="" class="yem-digital" title="Yem Digital">
+            </li>
+            <li class="logos__item">
+              <img src="../../assets/images/rs_school.svg" alt="" class="rs-school" title="Rolling Scopes School">
+            </li>
+          </ul>
+          <ul class="footer-nav footer-nav_vertical">
+            <li class="footer-nav__item">
+              <a href="../landing/landing.html" class="footer-nav__link">about</a>
+            </li>
+            <li class="footer-nav__item">
+              <a href="../zoos/panda/panda.html" class="footer-nav__link">zoos</a>
+            </li>
+            <li class="footer-nav__item">
+              <a href="./map.html" class="footer-nav__link">map</a>
+            </li>
+            <li class="footer-nav__item">
+              <a href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" class="footer-nav__link">design</a>
+            </li>
+          </ul>
+          <a href="#" name="contact"></a>
+          <form action="" class="contact-form">
+            <h3 class="contact-form__title">Contact us</h3>
+            <input type="text" class="contact-form__name" placeholder="Name" required>
+            <input type="email" class="contact-form__email" placeholder="Email" required>
+            <fieldset class="contact-form__fieldset">
+              <legend class="contact-form__legend">Please enter your message</legend>
+              <textarea class="contact-form__textarea" name="" cols="35" rows="4" minlength="10" maxlength="280"
+                required>
+              </textarea>
+            </fieldset>
+            <input class="contact-form__checkbox" id="agreement" type="checkbox" required>
+            <label class="contact-form__label" for="agreement">I agree to the processing of Personal Data</label>
+            <div class="btn-container">
+              <input class="contact-form__btn" type="submit" value="SEND">
+            </div>
+          </form>
+        </div>
+        <div class="right-content">
+          <div class="nav-and-contacts">
+            <ul class="footer-nav">
+              <li class="footer-nav__item">
+                <a href="../landing/landing.html" class="footer-nav__link">about</a>
+              </li>
+              <li class="footer-nav__item">
+                <a href="../zoos/panda/panda.html" class="footer-nav__link">zoos</a>
+              </li>
+              <li class="footer-nav__item">
+                <a href="../map/map.html" class="footer-nav__link">map</a>
+              </li>
+              <li class="footer-nav__item">
+                <a href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" class="footer-nav__link">design</a>
+              </li>
+            </ul>
+            <article class="contacts">
+              <h4 class="contacts__title">ZOO Online Centre</h4>
+              <address class="address">
+                <div class="address__text">
+                  <span class="address__span_mb">132, Address District, Street</span>
+                  <span>Open Daily 10:00 am - 5:00 pm</span>
+                </div>
+                <a class="address__link address__link_mb" href="tel:+3757021633433">T(702) 163-3433</a>
+                <a class="address__link" href="mailto:zoo.online@gmail.com">zoo.online@gmail.com</a>
+              </address>
+              <ul class="social social_line">
+                <li class="social__item">
+                  <a class="social__link social__link_insta" href="https://www.instagram.com/"></a>
+                </li>
+                <li class="social__item">
+                  <a class="social__link social__link_twitter" href="https://twitter.com/"></a>
+                </li>
+                <li class="social__item">
+                  <a class="social__link social__link_vk" href="https://vk.com/"></a>
+                </li>
+                <li class="social__item">
+                  <a class="social__link social__link_youtube" href="https://www.youtube.com/"></a>
+                </li>
+              </ul>
+            </article>
+          </div>
+          <a href="#" class="watch-btn watch-btn_footer">
+            donate for volunteers
+          </a>
+        </div>
+      </div>
+      <hr class="footer-hr">
+      <div class="copyrights">
+        <div class="copyrights__text">©Noora Sagnayeva</div>
+        <div class="copyrights__text">©RSSchool and ©Yem Digital - 2021</div>
+      </div>
+    </div>
+  </footer>
+  <script src="./map.js"></script>
+</body>
+
+</html>
